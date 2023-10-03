@@ -3,9 +3,13 @@ from django.urls import include, path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path("", include("hello.urls")),
-    path("hello", include("hello.urls")),
-    path('admin/', admin.site.urls),
+    path("", include("SEF.urls")),
+    path("admin", include("SEF.urls")),
+    path("authentication", include("SEF.urls")),
+    path("about-us", include("SEF.urls")),
+    path("pet-detail", include("SEF.urls")),
+    path("pet-form", include("SEF.urls")),
+    path("pet-list", include("SEF.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
