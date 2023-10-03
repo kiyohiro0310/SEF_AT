@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Notifiable Data Breaches Report | OAIC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'hello/master.css' %}">
+  </head>
+  <body>
+    <header>
+      <div class="header--container">
+        <div>
+          <a href="databreach.html">Data Breach</a>
+          <a href="respond.html">Notification Response</a>
+        </div>
+        <div class="header--right">
+          <div>
+            <p>22085908</p>
+            <p>Kiyohiro Kambayashi</p>
+            <p>Tuesday 11:00-13:00</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h1>Notifiable Data Breaches Scheme</h1>
+
+      <h2>Notifiable Data Breaches Reposrt: July-December 2020</h2>
+
+      <div>
+        <h3>About this report</h3>
+        <p>
+          The Office of the Australian Information Commissioner (OAIC)
+          periodically publishes statistical information about notifications
+          received under the Notifiable Data Breaches (NDB) scheme to assist
+          entities and the public to understand the operation of the scheme.
+          This report captures notifications made under the NDB scheme for the
+          period from 1 July to 31 December 2020.
+        </p>
+
+        <p>
+          NDB scheme statistics in this report are current as of 8 January 2021.
+          However, a number of notifications included in these statistics are
+          still under assessment and their status and categorisation are subject
+          to change.
+        </p>
+      </div>
+
+      <div>
+        <h3>Executive summary</h3>
+        <p>
+          The NDB scheme was established in February 2018 to improve consumer
+          protection and drive better security standards for protecting personal
+          information. Under the scheme, any organisation or government agency
+          covered by the Privacy Act 1988 must notify individuals affected and
+          the OAIC when a data breach is likely to result in serious harm to an
+          individual whose personal information is involved.
+        </p>
+
+        <p>
+          The OAIC publishes twice-yearly reports on notifications received
+          under the NDB scheme to track the leading sources of data breaches,
+          and to highlight emerging issues and areas for ongoing attention by
+          regulated entities.
+        </p>
+
+        <div class="figure--container">
+          <figure class="image--figure">
+            <div class="image--container">
+              <img class="image" src="{% static 'images/figure1.jpg' %}" alt="Notification trends second half year 2020" width="550" height="262"/>
+            </div>
+            <figcaption class="image--caption">
+              Comparisons are to the period from 1 January to 30 June 2020.
+              These figures do not add up to a total of 100% due to the rounding up or down of the percentages for each category.
+            </figcaption>
+          </figure>
+          <div>
+            <p>Key findings for the July to December 2020 reporting period:</p>
+            <ol>
+                <li>539 breaches were notified under the scheme, an increase of 5% from the 512 notifications received from January to June 2020.</li>
+                <li>Malicious or criminal attacks (including cyber incidents) remain the leading source of data breaches, accounting for 58% of notifications.</li>
+                <li>Data breaches resulting from human error accounted for 38% of notifications, up 18% from 173 notifications to 204.</li>
+                <li>The health sector remains the highest reporting industry sector, notifying 23% of all breaches, followed by finance, which notified 15% of all breaches.</li>
+                <li>The Australian Government entered the top 5 industry sectors to notify data breaches for the first time, notifying 6% of all breaches.</li>
+                <li>68% of data breaches affected 100 individuals or fewer.</li>
+                <li>78% of entities notified the OAIC within 30 days of becoming aware of an incident that was subsequently assessed to be an eligible data breach.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+
+
+      <figure class="figure--chart">
+        <div class="chart--container">
+          <img class="chart" src="{% static 'images/Chart1.svg' %}" alt="number of data breach notifications per month" width="700" height="348">
+        </div>
+        <figcaption class="chart--caption">
+            Chart 1 - Data breach notifications under the NDB scheme
+        </figcaption>
+      </figure>
+    </section>
+    <br>
+
+    <footer>
+      <p>
+        <b>Acknowledgement of Country</b><br />
+        <span>
+          We acknowledge the traditional custodians of Australia and their
+          continuing connection to land, sea and community. We pay our respects
+          to the people, the cultures and the elders past, present and emerging.
+        </span>
+      </p>
+
+      <p>
+        All material presented on this website is provided under a
+        <a href="https://creativecommons.org/licenses/by/3.0/au/legalcode"
+          >Creative Commons Attribution 3.0 Australia licence.</a
+        >
+        <br />
+        All material presented on this website is sourced from Office of the
+        Australian Information Commissioner -
+        <a href="https://www.oaic.gov.au/">www.oaic.gov.au</a>
+      </p>
+    </footer>
+  </body>
+</html>
