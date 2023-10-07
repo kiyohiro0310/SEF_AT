@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/master.css'" %}">
+    <link rel="stylesheet" href="{% static 'css/Kiyo.css'" %}">
 </head>
 <body>
+    {% include 'layout/header.html' %}
     <h1>This is home page</h1>
 </body>
 </html>
