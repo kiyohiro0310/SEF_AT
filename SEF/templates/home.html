@@ -13,6 +13,75 @@
 </head>
 <body>
     {% include 'layout/header.html' %}
-    <h1>This is home page</h1>
+
+    <div id="hero">
+        <div id="hero-left">
+            <h1>Find Your Pet</h1>
+            <p>Pet need your hand</p>
+            <form action="#" id="search-pet">
+                <div>
+                    <select name="kind" id="kind">
+                        <option value="dog">Dog</option>
+                    </select>
+                    <select name="size" id="size">
+                        <option value="small">Small</option>
+                    </select>
+                    <select name="color" id="color">
+                        <option value="white">White</option>
+                    </select>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div id="hero-right">
+            <img src="{% static 'images/home/pet1.jpeg' %}" alt="pet home image">
+        </div>
+    </div>
+
+    <div id="list">
+        <div id="list-menu">
+            <div>
+                <h2>Kinds</h2>
+                <a href="/pet-list?kind=dog">Dog</a>
+                <a href="/pet-list?kind=cat">Cat</a>
+                <a href="/pet-list?kind=others">Others</a>
+            </div>
+            <div>
+                <h2>Location</h2>
+                <a href="/pet-list?location=qld">QLD</a>
+                <a href="/pet-list?location=nsw">NSW</a>
+                <a href="/pet-list?location=vic">VIC</a>
+                <a href="/pet-list?location=sa">SA</a>
+            </div>
+            <div>
+                <h2>Gender</h2>
+                <a href="/pet-list?gender=male">Male</a>
+                <a href="/pet-list?gender=female">Female</a>
+            </div>
+            <div>
+                <h2>Size</h2>
+                <a href="/pet-list?size=small">Small</a>
+                <a href="/pet-list?size=medium">Medium</a>
+                <a href="/pet-list?size=large">Large</a>
+                <a href="/pet-list?size=xlarge">XLarge</a>
+                <a href="/pet-list?size=xxlarge">XXLarge</a>
+            </div>
+            <div>
+                <h2>Age</h2>
+                <a href="/pet-list?age=12">~12 months</a>
+                <a href="/pet-list?age=12-24">12~24 months</a>
+                <a href="/pet-list?age=24">24~ months</a>
+            </div>
+        </div>
+        <div id="list-pets">
+            <h1>The latest arrival</h1>
+            <p>Latest small lives in Australia.</p>
+            <div id="pets">
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'layout/footer.html' %}
 </body>
 </html>
