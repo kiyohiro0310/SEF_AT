@@ -37,26 +37,13 @@
     </div>
 
     <div id="list">
-        {% include 'layout/list-menu.html' %}
+        {% include 'components/list-menu.html' %}
         <div id="list-pets">
             <h1>The latest arrival</h1>
             <p>Latest small lives in Australia.</p>
 
-            <div id="pets">
-                {% for pet in pets|slice:":20" %}
-                    <a href="/pet-detail?pet_id={{ pet.id }}" id="pet-box">
-                        <div id="pet-img">
-                            <img src="static/{{ pet.image_path }}" alt="{{ pet.name }} image">
-                        </div>
-                        <div id="pet-feature">
-                            <p>Name: {{ pet.name }}</p>
-                            <p>Status: {{ pet.status }}</p>
-                            <p>Location: {{ pet.suburb }} {{ pet.state }}
-                            <p>Date: {{ pet.date_added }}</p>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
+            {% include 'components/pet-list-home.html' %}
+
         </div>
     </div>
 
