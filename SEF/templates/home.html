@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
     <title>Home</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/master.css'" %}">
-    <link rel="stylesheet" href="{% static 'css/Kiyo.css'" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Kiyo.css'" %}">
 </head>
 <body>
     {% include 'layout/header.html' %}
@@ -33,51 +33,29 @@
                 <button type="submit">Search</button>
             </form>
         </div>
-        <div id="hero-right">
-            <img src="{% static 'images/home/pet1.jpeg' %}" alt="pet home image">
-        </div>
+
     </div>
 
     <div id="list">
-        <div id="list-menu">
-            <div>
-                <h2>Kinds</h2>
-                <a href="/pet-list?kind=dog">Dog</a>
-                <a href="/pet-list?kind=cat">Cat</a>
-                <a href="/pet-list?kind=others">Others</a>
-            </div>
-            <div>
-                <h2>Location</h2>
-                <a href="/pet-list?location=qld">QLD</a>
-                <a href="/pet-list?location=nsw">NSW</a>
-                <a href="/pet-list?location=vic">VIC</a>
-                <a href="/pet-list?location=sa">SA</a>
-            </div>
-            <div>
-                <h2>Gender</h2>
-                <a href="/pet-list?gender=male">Male</a>
-                <a href="/pet-list?gender=female">Female</a>
-            </div>
-            <div>
-                <h2>Size</h2>
-                <a href="/pet-list?size=small">Small</a>
-                <a href="/pet-list?size=medium">Medium</a>
-                <a href="/pet-list?size=large">Large</a>
-                <a href="/pet-list?size=xlarge">XLarge</a>
-                <a href="/pet-list?size=xxlarge">XXLarge</a>
-            </div>
-            <div>
-                <h2>Age</h2>
-                <a href="/pet-list?age=12">~12 months</a>
-                <a href="/pet-list?age=12-24">12~24 months</a>
-                <a href="/pet-list?age=24">24~ months</a>
-            </div>
-        </div>
+        {% include 'layout/list-menu.html' %}
         <div id="list-pets">
             <h1>The latest arrival</h1>
             <p>Latest small lives in Australia.</p>
-            <div id="pets">
 
+            <div id="pets">
+                {% for pet in pets|slice:":20" %}
+                    <a href="/pet-detail?pet_id={{ pet.id }}" id="pet-box">
+                        <div id="pet-img">
+                            <img src="static/{{ pet.image_path }}" alt="{{ pet.name }} image">
+                        </div>
+                        <div id="pet-feature">
+                            <p>Name: {{ pet.name }}</p>
+                            <p>Status: {{ pet.status }}</p>
+                            <p>Location: {{ pet.suburb }} {{ pet.state }}
+                            <p>Date: {{ pet.date_added }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>
