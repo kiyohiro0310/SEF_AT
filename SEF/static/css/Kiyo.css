@@ -179,6 +179,7 @@
     #mobile-menu-button {
         display: flex;
     }
+}
 
 #motto {
     width: 100%;
@@ -199,6 +200,7 @@
 }
 #contact h1, #contact p {
     padding-left: 30px;
+    text-align: center;
 }
 
 #contact form {
