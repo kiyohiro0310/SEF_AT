@@ -142,6 +142,9 @@
 #pet-feature {
     padding: 10px;
 }
+#pet-list-main {
+    padding: 10px;
+}
 
 @media screen and (max-width: 900px) {
     #list-menu {

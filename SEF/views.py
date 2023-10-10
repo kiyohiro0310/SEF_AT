@@ -6,7 +6,7 @@ from SEF.models import Pet
 
 # Create your views here.
 def home(request):
-    pets = Pet.objects.all().order_by("-id").values()
+    pets = Pet.objects.all().order_by("-id").values()[:20]
     return render(
         request,
         'home.html',
@@ -50,7 +50,9 @@ def pet_form(request):
     )
 
 def pet_list(request):
+    pets = pets = Pet.objects.all().order_by("-id").values()
     return render(
         request,
-        'pet-list.html'
+        'pet-list.html',
+        context={'pets': pets}
     )
