@@ -1,7 +1,7 @@
 from django import forms
-from SEF.models import pets
+from SEF.models import User
 
-class LogMessageForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
-        model = pets
-        fields = ("message",)   # NOTE: the trailing comma is required
+        model = User
+        fields = ("firstname","lastname","username","email","phone","password",)

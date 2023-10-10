@@ -1,8 +1,12 @@
+
 import datetime
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from SEF.forms import UserForm
+from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth import authenticate, login, logout
 
-from SEF.models import Pet
+from SEF.models import Pet, User
 
 # Create your views here.
 def home(request):
@@ -13,13 +17,11 @@ def home(request):
         context={'pets': pets}
     )
 
-# Pet list
 def admin(request):
     return render(
         request,
         'admin.html'
     )
-
 
 def authentication(request):
     method = request.GET["auth_method"]
@@ -58,3 +60,32 @@ def pet_list(request):
         'pet-list.html',
         context={'pets': pets}
     )
+
+def signup(request):
+    form = UserForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            user = form.save()
+            user.password = make_password(user.password)
+            user.last_login = datetime.date.today()
+            user.save()
+        return redirect("/")
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = User.objects.get(username=username)
+
+        if user is not None and check_password(password, user.password):
+            request.session['login_user'] = user.id
+            return redirect("/")
+
+        return redirect("/authentication?auth_method=login")
+
+def signout(request):
+    del request.session['login_user']
+    return redirect("/")
+
+
+
