@@ -1,0 +1,19 @@
+{% load static %}
+<header id="header-desktop">
+    <div id="header-left">
+        <h1><a href="/" id="logo">ABC Pet Adoption</a></h1>
+        <div>
+            <a href="/pet-list">Pets</a>
+            <a href="/about-us">About us</a>
+            <a href="/about-us#faq">FAQ</a>
+        </div>
+    </div>
+
+    <div id="header-right">
+        <a href="/authentication#login" id="login">Login</a>
+        <a href="/authentication#signup" id="signup">Signup</a>
+    </div>
+    <div id="header-right-mobile">
+        <img src="{% static 'images/icons/menu.png' %}" alt="menu" width="20">
+    </div>
+</header>

@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <title>ABC Pet Adoption</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Kiyo.css'" %}">
 </head>
 <body>
-    <h1>This is home page</h1>
+    {% include 'layout/header.html' %}
+
+    <div id="hero">
+        <div id="hero-left">
+            <h1>Find Your Pet</h1>
+            <p>Pet need your hand</p>
+            <form action="#" id="search-pet">
+                <div>
+                    <select name="kind" id="kind">
+                        <option value="dog">Dog</option>
+                    </select>
+                    <select name="size" id="size">
+                        <option value="small">Small</option>
+                    </select>
+                    <select name="color" id="color">
+                        <option value="white">White</option>
+                    </select>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div id="list">
+        {% include 'components/list-menu.html' %}
+        <div id="list-pets">
+            <h1>The latest arrival</h1>
+            <p>Latest small lives in Australia.</p>
+
+            {% include 'components/pet-list-home.html' %}
+
+        </div>
+    </div>
+
+    {% include 'layout/footer.html' %}
 </body>
 </html>
