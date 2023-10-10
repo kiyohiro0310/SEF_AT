@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css'" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
+    
     <title>About Us</title>
 </head>
 <body>
-    <header>
-        <p>Navbar goes here</p>
-    </header>
+    {% include "layout/header.html" %}
+    
     <h1 class="main">About Us</h1>
     <hr>
     <h2 class="Heading">Who are we?</h2>
@@ -43,8 +47,6 @@
     <h2 class="Heading">Contact Us</h2>
     <p>Facebook: Instagram: Social</p>
     
-<footer>
-    <p><a href="annie@fakeemail.com">annie@fakeemail.com</a></p>
-</footer>
+{% include 'layout/footer.html' %}
 </body>
 </html>
