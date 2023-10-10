@@ -17,9 +17,10 @@
     <div id="auth-container">
         {% if auth_method == "signup" %}
             {% include 'components/signup.html' %}
-        {% endif %}
-        {% if auth_method == "login" %}
+        {% elif auth_method == "login" %}
             {% include 'components/login.html' %}
+        {% else %}
+            <h1>This content cannot be found</h1>
         {% endif %}
     </div>
     {% include 'layout/footer.html' %}
