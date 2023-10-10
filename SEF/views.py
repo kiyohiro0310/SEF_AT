@@ -36,7 +36,7 @@ def about_us(request):
 def pet_detail(request):
     pet_id = request.GET["pet_id"]
     pet = Pet.objects.get(id=pet_id)
-    print(pet)
+    print(pet.description)
     return render(
         request,
         'pet-detail.html',

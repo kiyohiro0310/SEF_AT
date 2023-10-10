@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/master.css'" %}">
+    <link rel="stylesheet" href="{% static 'css/sherry.css'" %}">
+
 </head>
 <body>
+    {% include 'layout/header.html' %}
     <h1>This is {{ pet.name }} page</h1>
+    <h2>{{ pet.description }}</h2>
     <a href="/pet-form">Go to pet form</a>
+    {% include 'layout/footer.html' %}
 </body>
 </html>
