@@ -22,9 +22,11 @@ def admin(request):
 
 
 def authentication(request):
+    method = request.GET["auth_method"]
     return render(
         request,
-        'authentication.html'
+        'authentication.html',
+        context={'auth_method': method}
     )
 
 def about_us(request):
