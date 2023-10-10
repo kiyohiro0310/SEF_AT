@@ -9,12 +9,10 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css'" %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
-    
     <title>About Us</title>
 </head>
 <body>
     {% include "layout/header.html" %}
-    
     <h1 class="main">About Us</h1>
     <hr>
     <h2 class="Heading">Who are we?</h2>
@@ -24,6 +22,8 @@
         benefits not only potential adopters but also our dedicated team of volunteers.
     </p>
 
+    <img src="static/images/husky.png" alt="Friendly Husky Dog!" >    
+    
     <h2 class="Heading">Our Objectives</h2>
     <ol>
         <li>Rescue: Save and protect animals in distress.</li>
@@ -43,10 +43,34 @@
     rescuing strays. Over the years, she volunteered at shelters and saw the need for a dedicated adoption center. With determination
     and support, the center was born. Today, it thrives as a hub of compassion, connecting animals with loving homes, thanks to Annie's
     unwavering commitment.</p>
-    <h1>New change</h1>
-    <h2 class="Heading">Contact Us</h2>
-    <p>Facebook: Instagram: Social</p>
-    
+
+    <h2 class="Heading">Hiring</h2>
+    <p>Would you want to work at ABC Pet Adoptions? Submit an application here!</p>
+    <form action="#" method="post">
+        <div class="oneRow">
+        <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" pattern="[a - zA - Z]+"></p>
+        <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" pattern="[a - zA - Z]+"></p>
+        </div>
+        <div class="twoRow">
+        <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" </p>
+        <p>Email <input type="text" name="Email" placeholder="Enter Email" </p>
+        </div>
+        <div class="threeRow"
+        <p><label for="resume">Resume:</label>
+        <input type="file" id="resume" name="resume"><br></p>
+        </div>
+        <div class= "fourRow">
+        <p><label for="textDescribe">Tell us about yourself in 500 words or less!</label> </p>
+        <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
+        </textarea>
+    </div>
+        <br>
+        <div class="button-container">
+        <button  class = "button" type="submit">Apply</button>
+        </div>
+    </form>
+<br>
+
 {% include 'layout/footer.html' %}
 </body>
 </html>

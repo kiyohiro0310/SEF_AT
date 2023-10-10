@@ -1,3 +1,55 @@
-*{
-    color: red;
+.main{
+    text-align: center;
+    background-image: url("../images/puppy1.jpg");
+    background-size: cover;
+    background-position: cenrtre;
+    margin: 0;
+    padding: 30px;
+    width: 100%; /* Set the width of the container */
+    height: 300px; /* Set the desired height of the container */
+}
+
+h1, h2, h3, p, ol{
+    padding-left: 30px;
+}
+
+/* body{
+    background-image: url("../images/husky.png");
+} */
+
+img{
+    height: 300px;
+    width: 300px;
+    float: right;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.oneRow, .twoRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.fourRow, .threeRow{
+    padding-left: 30px;
+}
+
+.button-container{
+    padding-left: 20px;
+}
+
+.button{
+    margin-top: 10px;
+    width: 130px;
+    height: 34px;
+    border-radius: 5px;
+    border: 1px solid #A0C49D;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+.button:hover {
+    background-color: #A0C49D;
+    border: none;
+    color: white;
 }
