@@ -30,14 +30,18 @@
                         <option value="white">White</option>
                     </select>
                 </div>
-                <button type="submit">Search</button>
+                <button id="submit" type="submit">Search</button>
             </form>
         </div>
-
     </div>
 
     <div id="list">
+        <div id="mobile-menu-button">></div>
+
         {% include 'components/list-menu.html' %}
+        <div id="list-menu-mobile">
+            {% include 'components/list-menu.html' %}
+        </div>
         <div id="list-pets">
             <h1>The latest arrival</h1>
             <p>Latest small lives in Australia.</p>
@@ -45,6 +49,41 @@
             {% include 'components/pet-list-home.html' %}
 
         </div>
+    </div>
+
+    <div id="motto">
+        <h1>We are here to help beloved small lives</h1>
+        <p>Your hand will save lots of animals</p>
+    </div>
+
+    <div id="contact">
+        <h1>Contact</h1>
+        <p>Please don't hesitate to ask question</p>
+        <form action="/contact" method="POST">
+            <div id="contact-top">
+                <div>
+                    <label for="name">Name</label>
+                    <input name="name" id="name" type="text" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input name="email" id="email" type="text" required>
+                </div>
+            </div>
+            <div id="contact-bottom">
+                <div>
+                    <label for="title">Title</label>
+                    <input name="title" id="title" type="text" required>
+                </div>
+                <div>
+                    <label for="question">Question</label>
+                    <textarea name="question" id="question" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div id="contact-button">
+                <button id="submit" type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 
     {% include 'layout/footer.html' %}
