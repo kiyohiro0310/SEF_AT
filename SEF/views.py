@@ -69,6 +69,9 @@ def signup(request):
             user.password = make_password(user.password)
             user.last_login = datetime.date.today()
             user.save()
+
+            request.session['login_user'] = user.id
+
         return redirect("/")
 
 def login_view(request):
