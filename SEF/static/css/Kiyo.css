@@ -80,12 +80,13 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 20px;
+    position: relative;
 }
 
 #mobile-menu-button {
-    position: sticky;
+    position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     width: 30px;
     height: 80px;
     background-color: #A0C49D;
@@ -96,16 +97,39 @@
 }
 
 #list-menu {
-    width: 20%;
+    width: 60%;
+    margin: auto;
     height: fit-content;
     display: flex;
     flex-direction: column;
 }
 #list-menu-mobile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 12;
     width: 60%;
-    height: fit-content;
-    display: none;
+    height: 400px;
     flex-direction: column;
+    background-color: white;
+    display: none;
+    overflow: auto;
+}
+#list-menu-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 15;
+}
+#list-menu-close img {
+    padding: 10px;
+    color: black;
+    background-color: #badbb7;
+    border-radius: 5px;
+}
+#list-menu-desktop {
+    width: 20%;
 }
 #list-menu div {
     width: 70%;
@@ -129,6 +153,7 @@
 
 #list-pets {
     width: 80%;
+    position: relative;
 }
 
 #pets {
@@ -166,7 +191,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    #list-menu {
+    #list-menu-desktop {
         display: none;
     }
     #list-pets {
