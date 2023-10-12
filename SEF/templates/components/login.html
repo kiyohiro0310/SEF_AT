@@ -3,7 +3,9 @@
     <form id="auth-form" action="/login" method="POST">
         {% csrf_token %}
         <input type="text" name="username" id="username" placeholder="Username" required>
-        <input type="text" name="password" id="password" placeholder="Password" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
         <button id="auth-form-button" type="submit" >LOGIN</button>
     </form>
+    <span>Create account? <a href="/authentication?auth_method=signup">Signup</a></span>
+
 </div>

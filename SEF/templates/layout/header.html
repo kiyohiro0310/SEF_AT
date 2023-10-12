@@ -25,8 +25,36 @@
         </div>
     {% endif %}
 
-
-    <div id="header-right-mobile">
+    <div id="header-right-mobile-button">
         <img src="{% static 'images/icons/menu.png' %}" alt="menu" width="20">
+    </div>
+
+
+    {% comment %} Mobile menu {% endcomment %}
+    <div id="mobile-header-menu" style="display: none;">
+        <div id="mobile-header-menu-close">
+            <h1 style="font-size: 24px;"><a href="/" id="logo">ABC Pet Adoption</a></h1>
+            <img id="mobile-header-close-button" src="{% static 'images/icons/menu-close.svg' %}" alt="menu" width="20">
+        </div>
+
+        <a href="/pet-list">Pets</a>
+        <a href="/about-us">About us</a>
+
+        {% if request.session.login_user %}
+            <div id="mobile-header-right">
+
+                {% if request.session.login_user == 1 %}
+                <a href="/admin" id="login">Admin</a>
+                {% endif %}
+
+                <a href="/pet-form" id="login">Create</a>
+                <a href="/logout" id="signup">Logout</a>
+            </div>
+        {% else %}
+            <div id="mobile-header-right">
+                <a href="/authentication?auth_method=login" id="login">Login</a>
+                <a href="/authentication?auth_method=signup" id="signup">Signup</a>
+            </div>
+        {% endif %}
     </div>
 </header>

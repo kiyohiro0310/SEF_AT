@@ -13,5 +13,7 @@ urlpatterns = [
     path("signup", views.signup, name="signup"),
     path("login", views.login_view, name="login"),
     path("logout", views.signout),
-    path("admin/", admin.site.urls)
+    path("search-pet", views.search_pet),
+    path("edit-pet", views.edit_pet),
+    path("delete-pet", views.delete_pet)
 ]

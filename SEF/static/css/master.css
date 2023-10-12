@@ -16,7 +16,7 @@ html, body {
     border-bottom: 1px solid #efefef;
 }
 
-#header-left {
+#header-left{
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -61,15 +61,16 @@ html, body {
     color: #A0C49D;
 }
 #signup {
-    border: 2px solid black;
-}
-#signup:hover {
     border: 2px solid #A0C49D;
     background-color: #A0C49D;
     color: white;
+    border-radius: 10px;
+}
+#signup:hover {
+    opacity: 0.8;
 }
 
-#header-right-mobile {
+#header-right-mobile-button {
     display: none;
     width: 20%;
     justify-content: end;
@@ -86,7 +87,7 @@ html, body {
     #header-right {
         display: none;
     }
-    #header-right-mobile {
+    #header-right-mobile-button {
         display: flex;
     }
 }
@@ -140,4 +141,43 @@ html, body {
     #footer-middle, #footer-right {
         padding-bottom: 20px;
     }
+}
+
+/* Mobile header menu section */
+
+#mobile-header-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+#mobile-header-menu-close {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#mobile-header-menu-close {
+    padding-right: 20px;
+}
+
+#mobile-header-right, #mobile-header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#mobile-header-menu a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 10px 30px;
+    margin-bottom: 5px;
 }
