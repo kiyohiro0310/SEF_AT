@@ -1,28 +1,34 @@
+body {
+    overflow-x: hidden;
+    max-width: 100%; 
+    margin-left: 20px;
+}
+
+
 .main{
-    text-align: center;
+    text-align:center;
     background-image: url("../images/puppy1.jpg");
     background-size: cover;
-    background-position: cenrtre;
+    background-position: center;
     margin: 0;
     padding: 30px;
-    width: 100%; /* Set the width of the container */
-    height: 300px; /* Set the desired height of the container */
+    width: 100%; 
+    height: 300px; 
+    color: white;
 }
 
 h1, h2, h3, p, ol{
     padding-left: 30px;
 }
 
-/* body{
-    background-image: url("../images/husky.png");
-} */
-
 img{
+    padding-left: 10px;
     height: 300px;
     width: 300px;
     float: right;
     border-radius: 8px;
     margin-right: 10px;
+    align-self: center;
 }
 
 .oneRow, .twoRow {
@@ -36,6 +42,7 @@ img{
 
 .button-container{
     padding-left: 20px;
+    align-items: cet;
 }
 
 .button{
@@ -48,8 +55,35 @@ img{
     cursor: pointer;
     font-size: 18px;
 }
+
 .button:hover {
     background-color: #A0C49D;
     border: none;
     color: white;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-item {
+  text-align: center;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid black; /* Add borders for better visualization */
+  background-color: #efefef;
+  border-radius: 20px;
+}
+
+img {
+     max-width: 100%;
+     height: auto;
+     border-radius: 20px;
+
+}
+
+h2 {
+  margin: 10px 0;
 }
