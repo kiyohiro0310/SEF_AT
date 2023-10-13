@@ -15,5 +15,6 @@ urlpatterns = [
     path("logout", views.signout),
     path("search-pet", views.search_pet),
     path("edit-pet", views.edit_pet),
-    path("delete-pet", views.delete_pet)
+    path("delete-pet", views.delete_pet),
+    path("find-adopter", views.find_adopter),
 ]

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <title>ABC Pet Adoption | Pet edit ID:{{pet.id}}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Kiyo.css' %}">
+    <script src="{% static 'js/index.js' %}" defer></script>
+
+</head>
+<body>
+    {% include 'layout/header.html' %}
+    <div id="pet-edit">
+        <div id="pet-edit-container">
+            <h1>Edit pet ID: {{ pet.id }}</h1>
+            <form action="/edit-pet" method="POST">
+                {% csrf_token %}
+                <div id="edit-form-container">
+                    <input type="hidden" name="pet-id" id="pet-id" value="{{pet.id}}">
+                    <div>
+                        <label for="pet-name">Name:</label>
+                        <input type="text" name="pet-name" id="pet-name" value="{{pet.name}}" required>
+                    </div>
+                    <div>
+                        <label for="species">Species:</label>
+                        <input type="text" name="species" id="species" value="{{pet.species}}" required>
+                    </div>
+                    <div>
+                        <label for="breed">Breed:</label>
+                        <input type="text" name="breed" id="breed" value="{{pet.breed}}" required>
+                    </div>
+                    <div>
+                        <label for="age">Age:</label>
+                        <input type="text" name="age" id="age" value="{{pet.age}}" required>
+                    </div>
+                    <div>
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gender" required>
+                            <option value="{{pet.gender}}">{{pet.gender}}</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="status">Status:</label>
+                        <select name="status" id="status" required>
+                            <option value="{{pet.status}}">{{pet.status}}</option>
+                            <option value="Adoption Pending">Adoption Pending</option>
+                            <option value="Available">Available</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="suburb">Suburb:</label>
+                        <input type="text" name="suburb" id="suburb" value="{{pet.suburb}}" required>
+                    </div>
+                    <div>
+                        <label for="state">State:</label>
+                        <select name="state" id="state">
+                            <option value="{{pet.state}}">{{pet.state}}</option>
+                            <option value="QLD">QLD</option>
+                            <option value="NSW">NSW</option>
+                            <option value="SA">SA</option>
+                            <option value="ACT">ACT</option>
+                            <option value="VIC">VIC</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="fee">Fee:</label>
+                        <input type="text" name="fee" id="fee" value="{{pet.fee}}" required>
+                    </div>
+
+                </div>
+                <div id="description-container">
+                    <label for="description">Description:</label>
+                    <textarea name="description" id="description" cols="25" rows="20">{{pet.description}}</textarea>
+                </div>
+                <div id="edit-button-container">
+                    <button id="edit-button" type="submit">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% include 'layout/footer.html' %}
+</body>
+</html>
