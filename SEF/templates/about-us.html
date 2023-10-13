@@ -68,18 +68,19 @@
     
     <form action="#" method="post">
         <div class="oneRow">
-        <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" pattern="[a - zA - Z]+"></p>
-        <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" pattern="[a - zA - Z]+"></p>
+        <label for="firstName">First Name:</label>
+        <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
+        <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
         </div>
 
         <div class="twoRow">
-        <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" </p>
-        <p>Email <input type="text" name="Email" placeholder="Enter Email" </p>
+        <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" required</p>
+        <p>Email <input type="text" name="Email" placeholder="Enter Email" required</p>
         </div>
         
         <div class="threeRow"
         <p><label for="resume">Resume:</label>
-        <input type="file" id="resume" name="resume"><br></p>
+        <input type="file" id="resume" name="resume"optional><br></p>
         </div>
         
         <div class= "fourRow">
