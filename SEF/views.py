@@ -1,5 +1,6 @@
 
 import datetime
+from email.mime import application
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from SEF.forms import UserForm
@@ -24,7 +25,9 @@ def search_pet(request):
     if request.method == "POST":
         try:
             if request.POST:
+                state = request.POST["state"]
                 species = request.POST["species"].title()
+
                 age = request.POST["age"]
                 age_range= ''
                 if age == '5':
@@ -36,10 +39,13 @@ def search_pet(request):
                 if age == '10':
                     age_range = [10,100]
                     age = "10~ Years Old"
-                state = request.POST["state"]
+
                 category = f"Category: {species}, {age}, {state}"
 
-                pets = Pet.objects.all().filter(species=species, age__range=age_range, state=state).order_by("-date_added").values()
+                if species == "Others":
+                    pets = Pet.objects.all().filter(age__range=age_range, state=state).exclude(species='Dog').exclude(species='Cat').order_by("-date_added").values()
+                else:
+                    pets = Pet.objects.all().filter(species=species, age__range=age_range, state=state).order_by("-date_added").values()
             else:
                 pets = Pet.objects.all().order_by("-date_added").values()
 
@@ -76,7 +82,9 @@ def admin(request):
     if request.method == "POST":
         try:
             if request.POST:
+                state = request.POST["state"]
                 species = request.POST["species"].title()
+
                 age = request.POST["age"]
                 age_range= ''
                 if age == '5':
@@ -88,10 +96,13 @@ def admin(request):
                 if age == '10':
                     age_range = [10,100]
                     age = "10~ Years Old"
-                state = request.POST["state"]
+
                 category = f"Category: {species}, {age}, {state}"
 
-                pets = Pet.objects.all().filter(species=species, age__range=age_range, state=state).order_by("-date_added").values()
+                if species == "Others":
+                    pets = Pet.objects.all().filter(age__range=age_range, state=state).exclude(species='Dog').exclude(species='Cat').order_by("-date_added").values()
+                else:
+                    pets = Pet.objects.all().filter(species=species, age__range=age_range, state=state).order_by("-date_added").values()
             else:
                 pets = Pet.objects.all().order_by("-date_added").values()
 
@@ -116,11 +127,45 @@ def admin(request):
                 )
     else:
         pets = Pet.objects.all().order_by("-date_added").values()
-        return render(
-            request,
-            'admin.html',
-            context={'pets': pets}
-            )
+
+        try:
+            if request.GET["page"] == "pets":
+                return render(
+                    request,
+                    'admin.html',
+                    context={
+                        'pets': pets,
+                        'pets_content': True
+                    }
+                )
+            elif request.GET["page"] == "applications":
+                applications = []
+                return render(
+                    request,
+                    'admin.html',
+                    context={
+                        "admin_app_page": True,
+                        "applications": applications
+                    }
+                )
+            else:
+                return render(
+                    request,
+                    'admin.html',
+                    context={
+                        'pets': pets,
+                        'pets_content': True
+                    }
+                )
+        except:
+            return render(
+                request,
+                'admin.html',
+                context={
+                    'pets': pets,
+                    "pets_content": True
+                    }
+                )
 
 def authentication(request):
     method = request.GET["auth_method"]
@@ -139,7 +184,7 @@ def about_us(request):
 def pet_detail(request):
     pet_id = request.GET["pet_id"]
     pet = Pet.objects.get(id=pet_id)
-    print(pet.description)
+
     return render(
         request,
         'pet-detail.html',
@@ -157,7 +202,11 @@ def pet_list(request):
     category = 'All'
     try:
         if 'specie' in request.GET:
-            pets = Pet.objects.all().filter(species=request.GET["specie"].title()).order_by("-date_added").values()
+            if request.GET["specie"].title() == "Others":
+                pets = Pet.objects.all().exclude(species='Dog').exclude(species='Cat').order_by("-date_added").values()
+            else:
+                pets = Pet.objects.all().filter(species=request.GET["specie"].title()).order_by("-date_added").values()
+
             category = request.GET["specie"].title()
         elif 'state' in request.GET:
             pets = Pet.objects.all().filter(state=request.GET["state"].upper()).order_by("-date_added").values()
@@ -230,11 +279,128 @@ def signout(request):
     return redirect("/")
 
 def edit_pet(request):
-    pet_id = request.GET["pet_id"]
-    print(pet_id)
-    return redirect("/admin")
+    if request.method == 'GET':
+        pet_id = request.GET["pet_id"]
+        pet = Pet.objects.get(id=pet_id)
+
+        return render(
+            request,
+            'pet-edit.html',
+            context={
+                "pet": pet
+            }
+        )
+
+    if request.method == "POST":
+        pets = Pet.objects.all().order_by("-date_added").values()
+        try:
+            pet_id = request.POST["pet-id"]
+            pet_name = request.POST["pet-name"]
+            species = request.POST["species"].title()
+            breed = request.POST["breed"]
+            age = request.POST["age"].title()
+            gender = request.POST["gender"].title()
+            status = request.POST["status"]
+            suburb = request.POST["suburb"].title()
+            state = request.POST["state"].upper()
+            fee = request.POST["fee"]
+            description = request.POST['description']
+
+            pet = Pet.objects.get(id=pet_id)
+            pet.name = pet_name
+            pet.species = species
+            pet.breed = breed
+            pet.age = age
+            pet.gender = gender
+            pet.status = status
+            pet.suburb = suburb
+            pet.state = state
+            pet.fee = fee
+            pet.description = description
+
+            pet.save()
+
+            return render(
+                request,
+                'admin.html',
+                context={
+                    'pets': pets,
+                    'category': "All",
+                    'pets_content': True,
+                    'edit_success': f"Successfully editted pet: {pet_id}"
+                    }
+                )
+
+        except:
+            return render(
+                request,
+                'admin.html',
+                context={
+                    'pets': pets,
+                    'category': "All",
+                    'pets_content': True,
+                    'edit_fail': "Edit failed"
+                    }
+                )
 
 def delete_pet(request):
     pet_id = request.GET["pet_id"]
-    print(pet_id)
-    return redirect("/admin")
+    pet = Pet.objects.get(id=pet_id)
+    pet.delete()
+
+    pets = Pet.objects.all().order_by("-date_added").values()
+    return render(
+                request,
+                'admin.html',
+                context={
+                    'pets': pets,
+                    'category': "All",
+                    'pets_content': True,
+                    'delete': f"Successfully deleted pet: {pet_id}"
+                    }
+                )
+
+
+def find_adopter(request):
+    current_date = datetime.datetime.now()
+    if request.method == "POST":
+        try:
+            image_path = request.POST["image_path"]
+            pet_name = request.POST["pet-name"]
+            species = request.POST["species"].title()
+            breed = request.POST["breed"]
+            age = request.POST["age"].title()
+            gender = request.POST["gender"].title()
+            status = request.POST["status"]
+            suburb = request.POST["suburb"].title()
+            state = request.POST["state"].upper()
+            fee = request.POST["fee"]
+            description = request.POST['description']
+            date_added = current_date.strftime('%Y-%m-%d %H:%M:%S')
+
+            new_pet = Pet(
+                image_path=image_path,
+                name=pet_name,
+                species=species,
+                breed=breed,
+                age=age,
+                gender=gender,
+                status=status,
+                suburb=suburb,
+                state=state,
+                fee=fee,
+                description=description,
+                date_added=date_added
+            )
+
+            new_pet.save()
+
+            return redirect("/pet-list")
+
+        except:
+            return redirect("/pet-list")
+
+    return render(
+        request,
+        'find-adopter.html'
+    )
