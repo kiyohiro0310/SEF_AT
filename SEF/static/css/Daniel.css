@@ -1,14 +1,19 @@
 .form_container{
     text-align: center;
     width: 100%;
-    height: 100vh;
+    max-width: 600px;
+    height: 70vh;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 #form{
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+}
+
+.example{
+    font-size: small;
 }
 
 .button{

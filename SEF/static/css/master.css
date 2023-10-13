@@ -70,11 +70,16 @@ html, body {
     opacity: 0.8;
 }
 
-#header-right-mobile-button {
+#header-right-mobile {
     display: none;
     width: 20%;
-    justify-content: end;
+    margin: auto;
+    justify-content: center;
     align-items: center;
+}
+#header-right-mobile-button{
+    width: 20px;
+    border-radius: 0px;
 }
 
 @media screen and (max-width: 900px) {
@@ -87,7 +92,7 @@ html, body {
     #header-right {
         display: none;
     }
-    #header-right-mobile-button {
+    #header-right-mobile {
         display: flex;
     }
 }
