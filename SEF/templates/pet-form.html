@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Per registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <title>Pet Adoption Form</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Daniel.css'" %}">
 </head>
+
 <body>
-    <h1>This is pet form page</h1>
+    {% include 'layout/header.html' %}
+
+    <div class = form_container>
+        <form>
+            <label for="animal">What is the name of the animal you would like to adopt?</label><br>
+            <input type="text" id="animal" name="animal" placeholder="Animal Name" required="required"><br>
+            
+            <label for="email">What is your email?</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required="required">
+
+            <p>Do any other pets live in your home?</p>
+            <input type ="radio" id="yes" name="yes_no" value="Yes">
+            <label for="yes">Yes</label><br>
+            <input type ="radio" id="no" name="yes_no" value="No">
+            <label for="no">No</label><br>
+
+            <p><label for="textDescribe">Describe your home in 500 words or less</label> </p>
+            <p id="example">For example, do you have a backyard, the size of your house ect</p>
+            <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
+            </textarea>
+
+            <br>
+            <div class="button-container">
+            <button  class = "button" type="submit">Submit Form</button>
+            </div>
+        </form>
+    </div>
+    {% include 'layout/footer.html' %}
 </body>
 </html>
