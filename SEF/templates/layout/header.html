@@ -1,11 +1,4 @@
 {% load static %}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static 'js/Kiyo.js' %}" defer></script>
-</head>
-
 <header id="header-desktop">
     <div id="header-left">
         <h1><a href="/" id="logo">ABC Pet Adoption</a></h1>
@@ -22,7 +15,7 @@
             <a href="/admin" id="login">Admin</a>
             {% endif %}
 
-            <a href="/pet-form" id="login">Create</a>
+            <a href="/pet-form">Adopt a pet</a>
             <a href="/logout" id="signup">Logout</a>
         </div>
     {% else %}
@@ -32,16 +25,18 @@
         </div>
     {% endif %}
 
-    <div id="header-right-mobile-button">
-        <img src="{% static 'images/icons/menu.png' %}" alt="menu" width="20px">
+    <div id="header-right-mobile">
+        <img id="header-right-mobile-button" src="{% static 'images/icons/menu.png' %}" alt="menu" width="20px">
     </div>
 
 
     {% comment %} Mobile menu {% endcomment %}
     <div id="mobile-header-menu" style="display: none;">
         <div id="mobile-header-menu-close">
-            <h1 style="font-size: 24px;"><a href="/" id="logo">ABC Pet Adoption</a></h1>
-            <img id="mobile-header-close-button" src="{% static 'images/icons/menu-close.svg' %}" alt="menu" width="20">
+            <h1 style="font-size: 24px; width: 80%;"><a href="/" id="logo">ABC Pet Adoption</a></h1>
+            <div id="header-right-mobile">
+                <img id="mobile-header-close-button" src="{% static 'images/icons/menu-close.svg' %}" alt="menu" width="20px">
+            </div>
         </div>
 
         <a href="/pet-list">Pets</a>
@@ -51,10 +46,10 @@
             <div id="mobile-header-right">
 
                 {% if request.session.login_user == 1 %}
-                <a href="/admin" id="login">Admin</a>
+                    <a href="/admin" id="login">Admin</a>
                 {% endif %}
 
-                <a href="/pet-form" id="login">Create</a>
+                <a href="/pet-form">Adopt a pet</a>
                 <a href="/logout" id="signup">Logout</a>
             </div>
         {% else %}
@@ -65,4 +60,3 @@
         {% endif %}
     </div>
 </header>
-</html>

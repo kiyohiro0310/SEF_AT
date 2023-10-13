@@ -20,7 +20,7 @@ h1, h2, h3, p, ol{
     padding-left: 30px;
 }
 
-img{
+.img{
     padding-left: 10px;
     height: 300px;
     width: 200px;

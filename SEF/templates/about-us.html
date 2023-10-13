@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css'" %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
     <title>About Us</title>
-</head>
+]</head>
 <body>
     {% include "layout/header.html" %}
     <h1 class="main">About Us</h1>
@@ -33,7 +34,7 @@
     <div class="image-row">
         <div class="image-item">
             <div class="imCent">
-          <img src="static/images/husky.png" alt="Image 1">
+          <img class="img" src="static/images/husky.png" alt="Image 1">
         </div>
           <h2>Contribution</h2>
           <p>We welcome anyone who would want to contribute and participate with us! No matter how big or small the contribution any help is appreciated!</p>
@@ -41,7 +42,7 @@
         
         <div class="image-item">
             <div class="imCent">
-          <img src="static/images/boxer.png" alt="Image 2">
+          <img class="img" src="static/images/boxer.png" alt="Image 2">
             </div>
           <h2 class="Heading">Our Vision</h2>
           <p>Our vision is to make sure any and every animal we meet gets a loving home and the best care! We care for all and any animals! </p>
@@ -49,7 +50,7 @@
         
         <div class="image-item">
             <div class="imCent">
-          <img src="static/images/blacklab.png" alt="Image 3">
+          <img class="img" src="static/images/blacklab.png" alt="Image 3">
         </div>
           <h2>Our Purpose</h2>
           <p>To unite pets in need with loving families, creating lasting bonds of happiness and compassion in our community.</p>
@@ -65,37 +66,39 @@
 
     <h2 class="Heading">Hiring</h2>
     <p>Would you want to work at ABC Pet Adoptions? Submit an application here!</p>
-    
-    <form action="#" method="post">
-        <div class="oneRow">
-        <label for="firstName">First Name:</label>
-        <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
-        <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
-        </div>
-
-        <div class="twoRow">
-        <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" required</p>
-        <p>Email <input type="text" name="Email" placeholder="Enter Email" required</p>
-        </div>
-        
-        <div class="threeRow"
-        <p><label for="resume">Resume:</label>
-        <input type="file" id="resume" name="resume"optional><br></p>
-        </div>
-        
-        <div class= "fourRow">
-        <p><label for="textDescribe">Tell us about yourself in 500 words or less!</label> </p>
-        <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
-        </textarea>
+    <div class="last">
     </div>
 
-        <br>
-        <div class="button-container">
-        <button  class = "button" type="submit">Apply</button>
-        </div>
-    </form>
+    <form action="#" method="post" id="myForm">
+      <div class="oneRow">
+          <label for="firstName">First Name:</label>
+          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
+          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
+      </div>
+  
+      <div class="twoRow">
+          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number"></p>
+          <p>Email <input type="text" name="Email" placeholder="Enter Email"></p>
+      </div>
+  
+      <div class="threeRow">
+          <p><label for="resume">Resume:</label>
+          <input type="file" name="resume"><br></p>
+      </div>
+  
+      <div class="fourRow">
+          <p><label for="textDescribe">Tell us about yourself in 500 words or less!</label> </p>
+          <textarea name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500"></textarea>
+      </div>
+      <br>
+      <div class="button-container">
+          <button class="button" type="submit">Apply</button>
+      </div>
+  </form>
+  
 <br>
 
-{% include 'layout/footer.html' %}
+
 </body>
+
 </html>
