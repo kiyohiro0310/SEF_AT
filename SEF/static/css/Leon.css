@@ -4,7 +4,6 @@ body {
     margin-left: 20px;
 }
 
-
 .main{
     text-align:center;
     background-image: url("../images/puppy1.jpg");
@@ -24,7 +23,7 @@ h1, h2, h3, p, ol{
 img{
     padding-left: 10px;
     height: 300px;
-    width: 300px;
+    width: 200px;
     float: right;
     border-radius: 8px;
     margin-right: 10px;
@@ -70,20 +69,23 @@ img{
 .image-item {
   text-align: center;
   flex: 1;
-  padding: 20px;
+  padding: 60px;
   box-sizing: border-box;
   border: 1px solid black; /* Add borders for better visualization */
   background-color: #efefef;
   border-radius: 20px;
+  padding-top: 30px;
 }
 
 img {
      max-width: 100%;
      height: auto;
      border-radius: 20px;
-
 }
 
 h2 {
   margin: 10px 0;
+}
+.imCent{
+    align-items: center;
 }
