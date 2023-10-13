@@ -31,7 +31,7 @@
 }
 #search-pet select{
     width: 100px;
-    height: 34px;
+    height: 36px;
     padding: 3px 5px;
     font-size: 18px;
     cursor: pointer;
@@ -45,6 +45,7 @@
     background-color: white;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
 }
 #submit:hover{
     background-color: #A0C49D;
@@ -154,6 +155,7 @@
 #list-pets {
     width: 80%;
     position: relative;
+    z-index: 0;
 }
 
 #pets {
