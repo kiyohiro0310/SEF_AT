@@ -15,7 +15,7 @@
 </head>
 <body>
     {% include 'layout/header.html' %}
-
+    {% if request.session.login_user %}
     <div id="pet-edit">
         <div id="pet-edit-container">
             <h1>Find adopter</h1>
@@ -89,6 +89,13 @@
     </div>
 
 
+    {% else %}
+        <h1>You are not authorised to access this page.</h1>
+    {% endif %}
+
+
     {% include 'layout/footer.html' %}
+
+
 </body>
 </html>
