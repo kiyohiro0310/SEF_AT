@@ -1,19 +1,28 @@
 .form_container{
     text-align: center;
     width: 100%;
-    max-width: 600px;
     height: 70vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: lightcyan;
+    border-radius: 10px;
 }
 
-#form{
+.form_box{
     display: flex;
-    flex-direction: row;
+    width: 90%;
+    max-width: 600px;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    padding: 2vw 4vw;
 }
 
-.example{
-    font-size: small;
+#example{
+    margin-bottom: 5%;
+    font-size: smaller;
+    color: #A0C49D;
 }
 
 .button{

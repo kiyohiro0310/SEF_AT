@@ -11,8 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
     <title>About Us</title>
-    <script src="{% static 'js/index.js' %}" defer></script>
-</head>
+]</head>
 <body>
     {% include "layout/header.html" %}
     <h1 class="main">About Us</h1>
@@ -46,7 +45,7 @@
           <img class="img" src="static/images/boxer.png" alt="Image 2">
             </div>
           <h2 class="Heading">Our Vision</h2>
-          <p>Our vision is to make sure any and every animal we meet gets a loving home and the best care! </p>
+          <p>Our vision is to make sure any and every animal we meet gets a loving home and the best care! We care for all and any animals! </p>
         </div>
         
         <div class="image-item">
@@ -68,34 +67,35 @@
     <h2 class="Heading">Hiring</h2>
     <p>Would you want to work at ABC Pet Adoptions? Submit an application here!</p>
     <div class="last">
-    <img class="img" src="static/images/Rescue.png" alt="Image 2">
     </div>
-    <form action="#" method="post">
-        <div class="oneRow">
-        <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" pattern="[a - zA - Z]+"></p>
-        <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" pattern="[a - zA - Z]+"></p>
-        </div>
 
-        <div class="twoRow">
-        <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" </p>
-        <p>Email <input type="text" name="Email" placeholder="Enter Email" </p>
-        </div>
-        
-        <div class="threeRow">
-        <label for="resume">Resume:</label>
-        <input type="file" id="resume" name="resume"><br></p>
-        </div>
-        
-        <div class= "fourRow">
-        <p><label for="textDescribe">Tell us about yourself in 500 words or less!</label> </p>
-        <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
-        </textarea>
-    </div>
-        <br>
-        <div class="button-container">
-        <button  class = "button" type="submit">Apply</button>
-        </div>
-    </form>
+    <form action="#" method="post" id="myForm">
+      <div class="oneRow">
+          <label for="firstName">First Name:</label>
+          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
+          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
+      </div>
+  
+      <div class="twoRow">
+          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number"></p>
+          <p>Email <input type="text" name="Email" placeholder="Enter Email"></p>
+      </div>
+  
+      <div class="threeRow">
+          <p><label for="resume">Resume:</label>
+          <input type="file" name="resume"><br></p>
+      </div>
+  
+      <div class="fourRow">
+          <p><label for="textDescribe">Tell us about yourself in 500 words or less!</label> </p>
+          <textarea name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500"></textarea>
+      </div>
+      <br>
+      <div class="button-container">
+          <button class="button" type="submit">Apply</button>
+      </div>
+  </form>
+  
 <br>
 
 

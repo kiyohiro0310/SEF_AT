@@ -5,7 +5,11 @@
         <div>
             <a href="/pet-list">Pets</a>
             <a href="/about-us">About us</a>
-            <a href="/pet-form">Adopt a pet</a>
+
+            {% if request.session.login_user %}
+            <a href="/find-adopter" id="login">Find an adopter</a>
+            <a href="/pet-form" id="login">Adopt a pet</a>
+            {% endif %}
         </div>
     </div>
 
@@ -15,8 +19,6 @@
             {% if request.session.login_user == 1 %}
             <a href="/admin" id="login">Admin</a>
             {% endif %}
-
-            <a href="/pet-form" id="login">Create</a>
             <a href="/logout" id="signup">Logout</a>
         </div>
     {% else %}
@@ -45,12 +47,11 @@
 
         {% if request.session.login_user %}
             <div id="mobile-header-right">
-
+                <a href="/find-adopter" id="login">Find an adopter</a>
+                <a href="/pet-form" id="login">Adopt a pet</a>
                 {% if request.session.login_user == 1 %}
-                <a href="/admin" id="login">Admin</a>
+                    <a href="/admin" id="login">Admin</a>
                 {% endif %}
-
-                <a href="/pet-form" id="login">Create</a>
                 <a href="/logout" id="signup">Logout</a>
             </div>
         {% else %}

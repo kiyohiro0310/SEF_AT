@@ -14,32 +14,34 @@
 
 <body>
     {% include 'layout/header.html' %}
-
     <div class = form_container>
-        <form>
-            <label for="animal">What is the name of the animal you would like to adopt?</label><br>
-            <input type="text" id="animal" name="animal" placeholder="Animal Name" required="required"><br>
-            
-            <label for="email">What is your email?</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required="required">
+        <div class = form_box>
+            <form class = form_page>
+                <label for="animal">What is the name of the animal you would like to adopt?</label><br>
+                <input type="text" id="animal" name="animal" placeholder="Animal Name" required="required"><br>
+                
+                <label for="email">What is your email?</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required="required">
 
-            <p>Do any other pets live in your home?</p>
-            <input type ="radio" id="yes" name="yes_no" value="Yes">
-            <label for="yes">Yes</label><br>
-            <input type ="radio" id="no" name="yes_no" value="No">
-            <label for="no">No</label><br>
+                <p>Do any other pets live in your home?</p>
+                <input type ="radio" id="yes" name="yes_no" value="Yes">
+                <label for="yes">Yes</label><br>
+                <input type ="radio" id="no" name="yes_no" value="No">
+                <label for="no">No</label><br>
 
-            <p><label for="textDescribe">Describe your home in 500 words or less</label> </p>
-            <p id="example">For example, do you have a backyard, the size of your house ect</p>
-            <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
-            </textarea>
+                <p><label for="textDescribe">Describe your home in 500 words or less</label> </p>
+                <p id="example">For example, do you have a backyard, the size of your house ect</p>
+                <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
+                </textarea>
 
-            <br>
-            <div class="button-container">
-            <button  class = "button" type="submit">Submit Form</button>
-            </div>
-        </form>
+                <br>
+                <div class="button-container">
+                <button  class = "button" type="submit">Submit Form</button>
+                </div>
+            </form>
+        </div>
     </div>
+
     {% include 'layout/footer.html' %}
 </body>
 </html>
