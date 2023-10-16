@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
     <title>About Us</title>
-]</head>
+</head>
 <body>
     {% include "layout/header.html" %}
     <h1 class="main">About Us</h1>
@@ -70,8 +70,8 @@
     </div>
 
     <form action="#" method="post" id="myForm">
+      <div class = "form">
       <div class="oneRow">
-          <label for="firstName">First Name:</label>
           <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
           <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
       </div>
@@ -94,6 +94,7 @@
       <div class="button-container">
           <button class="button" type="submit">Apply</button>
       </div>
+    </div>
   </form>
   
 <br>
