@@ -42,4 +42,12 @@ class Migration(migrations.Migration):
                 ('last_login', models.CharField(max_length=300)),
             ],
         ),
+        migrations.CreateModel(
+            name='UserAndPet',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('pet_id', models.ForeignKey('Pet', on_delete=models.CASCADE)),
+                ('user_id', models.CharField(max_length=100)),
+            ]
+        )
     ]
