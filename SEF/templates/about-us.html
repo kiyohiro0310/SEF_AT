@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+
     {% load static %}
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
-    
+
     <title>About Us</title>
 </head>
 <body>
     {% include "layout/header.html" %}
-    
     <h1 class="main">About Us</h1>
-    <hr>
+    <br>
     <h2 class="Heading">Who are we?</h2>
     <p>At Annie Arkwright's Animal Adoption Organization, our mission is to find loving homes for unwanted animals in New South Wales (NSW). 
         Founded and managed by Annie Arkwright herself, our organization is driven by a deep passion for animal welfare and a commitment 
@@ -30,23 +32,77 @@
         <li>Rehome: Find loving homes for our rescued pets.</li>
         <li>Educate: Raise awareness about responsible pet ownership.</li>
     </ol>
-    <h2 class="Heading">Our Vision</h2>
-    <h3>Bringing Pets and People Together</h3>
-    <p>Our vision is to create a pet rescue website that serves as a bridge between pets in need and compassionate individuals looking to provide them with forever homes.
-     We aim to facilitate the adoption process by harnessing the power of technology and community support.
-    </p>
-    <h2 class="Heading"> Our Purpose</h2>
-    <p>To unite pets in need with loving families, creating lasting bonds of happiness and compassion in our community.</p>
-  
+    
+    
+    <div class="image-row">
+        <div class="image-item">
+            <div class="imCent">
+          <img class="img" src="static/images/husky.png" alt="Image 1">
+        </div>
+          <h2>Contribution</h2>
+          <p>We welcome anyone who would want to contribute and participate with us! No matter how big or small the contribution any help is appreciated!</p>
+        </div>
+        
+        <div class="image-item">
+            <div class="imCent">
+          <img class="img" src="static/images/boxer.png" alt="Image 2">
+            </div>
+          <h2 class="Heading">Our Vision</h2>
+          <p>Our vision is to make sure any and every animal we meet gets a loving home and the best care! We care for all and any animals! </p>
+        </div>
+        
+        <div class="image-item">
+            <div class="imCent">
+          <img class="img" src="static/images/blacklab.png" alt="Image 3">
+        </div>
+          <h2>Our Purpose</h2>
+          <p>To unite pets in need with loving families, creating lasting bonds of happiness and compassion in our community.</p>
+        </div>
+      </div>
+      <br>
+
     <h2 class="Heading"> Our History: A Lifelong Passion</h2>
     <p>Annie Arkwright's Adoption Center is the embodiment of Annie's lifelong love for animals. Her journey started in childhood, 
     rescuing strays. Over the years, she volunteered at shelters and saw the need for a dedicated adoption center. With determination
     and support, the center was born. Today, it thrives as a hub of compassion, connecting animals with loving homes, thanks to Annie's
     unwavering commitment.</p>
-    <h1>New change</h1>
-    <h2 class="Heading">Contact Us</h2>
-    <p>Facebook: Instagram: Social</p>
-    
-{% include 'layout/footer.html' %}
+
+    <h2 class="Heading">Hiring</h2>
+    <p>Would you want to work at ABC Pet Adoptions? Submit an application here!</p>
+    <div class="last">
+    </div>
+
+    <form action="#" method="post" id="myForm">
+      <div class = "form">
+      <div class="oneRow">
+          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
+          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
+      </div>
+  
+      <div class="twoRow">
+          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number"></p>
+          <p>Email <input type="text" name="Email" placeholder="Enter Email"></p>
+      </div>
+  
+      <div class="threeRow">
+          <p><label for="resume">Resume:</label>
+          <input type="file" name="resume"><br></p>
+      </div>
+  
+      <div class="fourRow">
+          <p><label for="textDescribe">Tell us about yourself in 500 words or less!</label> </p>
+          <textarea name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500"></textarea>
+      </div>
+      <br>
+      <div class="button-container">
+          <button class="button" type="submit">Apply</button>
+      </div>
+    </div>
+  </form>
+  
+<br>
+
+
 </body>
+
 </html>

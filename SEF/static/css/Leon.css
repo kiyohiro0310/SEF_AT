@@ -1,3 +1,143 @@
-*{
-    color: red;
+/* Default styles for larger screens */
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+    margin-left: 20px;
 }
+
+.main {
+    text-align: center;
+    background-image: url("../images/puppy1.jpg");
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    height: 300px;
+    color: white;
+}
+
+h1, h2, h3, p, ol {
+    padding-left: 30px;
+}
+
+.img {
+    padding-left: 10px;
+    height: 300px;
+    width: 200px;
+    float: right;
+    border-radius: 8px;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.oneRow, .twoRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.fourRow, .threeRow {
+    padding-left: 30px;
+}
+
+.button-container {
+    padding-left: 20px;
+    align-items: cet;
+}
+
+.button {
+    margin-top: 10px;
+    width: 130px;
+    height: 34px;
+    border-radius: 5px;
+    border: 1px solid #A0C49D;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: #A0C49D;
+    border: none;
+    color: white;
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-item {
+    text-align: center;
+    flex: 1;
+    padding: 60px;
+    box-sizing: border-box;
+    border: 1px solid black; /* Add borders for better visualization */
+    background-color: #efefef;
+    border-radius: 20px;
+    padding-top: 30px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+.imCent {
+    align-items: center;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 600px) {
+    body {
+        margin: 0; /* Remove the left margin */
+    }
+
+    .main {
+        background-size: contain; /* Adjust background size for smaller screens */
+        height: auto; /* Allow the content to determine the height */
+    }
+
+    .img {
+        width: 100%; /* Make images full-width for smaller screens */
+        height: auto;
+        float: none; /* Remove float */
+        margin-right: 0;
+    }
+
+    .oneRow, .twoRow {
+        flex-direction: column; /* Stack form inputs vertically for smaller screens */
+    }
+
+    .button-container {
+        padding-left: 0; /* Remove left padding */
+    }
+
+    .button {
+        width: 100%; /* Make the button full-width */
+    }
+    
+    .image-row {
+        flex-direction: column; /* Stack image items vertically for smaller screens */
+    }
+
+    .image-item {
+        padding: 20px; 
+        text-align: center; 
+    }
+    
+    h1, h2, h3, p, ol {
+        padding-left: 0; 
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .form{
+        text-align: center;
+    }
+}
+

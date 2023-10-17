@@ -10,6 +10,7 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Kiyo.css' %}">
+    <script src="{% static 'js/Kiyo.js' %}" defer></script>
 </head>
 <body>
     {% include 'layout/header.html' %}
@@ -18,26 +19,58 @@
         <div id="hero-left">
             <h1>Find Your Pet</h1>
             <p>Pet need your hand</p>
-            <form action="#" id="search-pet">
+            <form action="/search-pet" method="POST" id="search-pet">
+                {% csrf_token %}
                 <div>
-                    <select name="kind" id="kind">
+                    <select name="species" id="species">
+                        <option selected="true" disabled="disabled">Species</option>
                         <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="others">Others</option>
                     </select>
-                    <select name="size" id="size">
-                        <option value="small">Small</option>
+                    <select name="age" id="age" required>
+                        <option selected="true" disabled="disabled">Age</option>
+                        <option value="5">0~5</option>
+                        <option value="6-9">6~9</option>
+                        <option value="10">10~</option>
                     </select>
-                    <select name="color" id="color">
-                        <option value="white">White</option>
+                    <select name="state" id="state" required>
+                        <option selected="true" disabled="disabled">State</option>
+                        <option value="NSW">NSW</option>
+                        <option value="QLD">QLD</option>
+                        <option value="VIC">VIC</option>
+                        <option value="ACT">ACT</option>
+                        <option value="SA">SA</option>
                     </select>
                 </div>
-                <button type="submit">Search</button>
+                <button id="submit" type="submit">Search</button>
+                {% if error_msg %}
+                    <p style="color:red; background-color:white; padding:10px; border-radius: 5px;">
+                        {{ error_msg }}
+                    </p>
+                {% endif %}
             </form>
-        </div>
 
+        </div>
     </div>
 
     <div id="list">
-        {% include 'components/list-menu.html' %}
+        <div id="mobile-menu-button">
+            <
+        </div>
+
+        <div id="list-menu-mobile">
+            <div id="list-menu-close">
+                <img src="static/images/icons/menu-close.svg" alt="menu close" width="20px">
+            </div>
+            {% include 'components/list-menu.html' %}
+        </div>
+
+        <div id="list-menu-desktop">
+            {% include 'components/list-menu.html' %}
+        </div>
+
+
         <div id="list-pets">
             <h1>The latest arrival</h1>
             <p>Latest small lives in Australia.</p>
@@ -45,6 +78,41 @@
             {% include 'components/pet-list-home.html' %}
 
         </div>
+    </div>
+
+    <div id="motto">
+        <h1>We are here to help beloved small lives</h1>
+        <p>Your hand will save lots of animals</p>
+    </div>
+
+    <div id="contact">
+        <h1>Contact</h1>
+        <p>Please don't hesitate to ask question</p>
+        <form action="/contact" method="POST">
+            <div id="contact-top">
+                <div>
+                    <label for="name">Name</label>
+                    <input name="name" id="name" type="text" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input name="email" id="email" type="text" required>
+                </div>
+            </div>
+            <div id="contact-bottom">
+                <div>
+                    <label for="title">Title</label>
+                    <input name="title" id="title" type="text" required>
+                </div>
+                <div>
+                    <label for="question">Question</label>
+                    <textarea name="question" id="question" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div id="contact-button">
+                <button id="submit" type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 
     {% include 'layout/footer.html' %}

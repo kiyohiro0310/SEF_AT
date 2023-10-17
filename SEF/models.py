@@ -32,3 +32,23 @@ class Pet(models.Model):
                 "fee": self.fee,
                 "date_added": self.date_added
             })
+
+class User(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    password = models.CharField(max_length=300)
+    last_login = models.CharField(max_length=300)
+
+    def __str__(self):
+        return json.dumps({
+                "firstname": self.firstname,
+                "lastname": self.lastname,
+                "username": self.username,
+                "email": self.email,
+                "phone": self.phone,
+                "password": self.password,
+                "last_login": self.last_login
+            })

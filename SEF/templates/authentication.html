@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/Signup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <title>User authentication</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/auth.css' %}">
+    <script src="{% static 'js/index.js' %}" defer></script>
 </head>
+
 <body>
-    <h1>This is login/signup page</h1>
+    {% include 'layout/header.html' %}
+    <div id="auth-container">
+        {% if auth_method == "signup" %}
+            {% include 'components/signup.html' %}
+        {% elif auth_method == "login" %}
+            {% include 'components/login.html' %}
+        {% else %}
+            <h1>This content cannot be found</h1>
+        {% endif %}
+    </div>
+    {% include 'layout/footer.html' %}
 </body>
 </html>

@@ -1,5 +1,8 @@
 <div id="pets">
-    {% for pet in pets %}
+    {% if not pets %}
+        <h1>No result found.</h1>
+    {% else %}
+        {% for pet in pets %}
         <a href="/pet-detail?pet_id={{ pet.id }}" id="pet-box">
             <div id="pet-img">
                 <img src="static/{{ pet.image_path }}" alt="{{ pet.name }} image">
@@ -11,5 +14,6 @@
                 <p>Date: {{ pet.date_added }}</p>
             </div>
         </a>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 </div>

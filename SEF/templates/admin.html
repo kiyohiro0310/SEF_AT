@@ -2,23 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet"  href="leon.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <title>ABC Pet Adoption | Admin</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Kiyo.css' %}">
+    <script src="{% static 'js/Kiyo.js' %}" defer></script>
+
 </head>
 <body>
-    <header>
-        <p>NavBar goes here</p>
-    </header>
-    <h1 class="centre"> Admin Page</h1>
-    <hr>
-    <div class="sidebar">
-    <p>Filler</p>
-    </div>
-    <h2>Placeholder</h2>
 
-    <footer>
-        <p><a href="annie@fakeemail.com">annie@fakeemail.com</a></p>
-    </footer>
+    {% if request.session.login_user == 1 %}
+        {% include 'layout/header.html' %}
+        <div id="admin-container">
+            <div id="container-left">
+                <h1>Admin page</h1>
+                <a href="/admin?page=pets">Pets</a>
+                <a href="/admin?page=applications">Applications</a>
+            </div>
+
+            {% if pets_content %}
+                {% include 'components/admins/admin-pets.html' %}
+            {% endif %}
+
+            {% if admin_app_page %}
+                {% include 'components/admins/admin-applications.html' %}
+            {% endif %}
+
+        </div>
+
+        {% include 'layout/footer.html' %}
+    {% else %}
+        <h1>You are not authorised to access this page.</h1>
+    {% endif %}
+
+
 </body>
 </html>
