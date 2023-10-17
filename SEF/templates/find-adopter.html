@@ -18,7 +18,8 @@
     {% if request.session.login_user %}
     <div id="pet-edit">
         <div id="pet-edit-container">
-            <h1>Find adopter</h1>
+            <!-- Changed the words in h1, this page will be for users to register pets they want to put for adoption so an admin can accept it.-->
+            <h1 style="padding:30px;">Register Your Pet</h1>
             <form action="/find-adopter" method="POST">
                 {% csrf_token %}
                 <div id="edit-form-container">
@@ -67,11 +68,15 @@
                             <option value="SA">SA</option>
                             <option value="ACT">ACT</option>
                             <option value="VIC">VIC</option>
+                            <option value="TAS">TAS</option>
+                            <!-- Added Tasmania option, -->
                         </select>
                     </div>
                     <div>
                         <label for="fee">Fee:</label>
-                        <input type="number" name="fee" id="fee" required>
+                        <input type="text" name="fee" id="fee" required>
+                        <!-- Changed from number to text -->
+
                     </div>
 
                 </div>
@@ -80,7 +85,7 @@
                     <textarea name="description" id="description" cols="25" rows="20"></textarea>
                 </div>
                 <div id="edit-button-container">
-                    <button id="edit-button" type="submit">Edit</button>
+                    <button id="edit-button" type="submit">Submit</button>
                 </div>
             </form>
         </div>
