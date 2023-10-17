@@ -1,0 +1,73 @@
+<div id="pet-list-main">
+
+
+
+    <form action="/search-pet" method="POST" id="search-pet" style="padding: 20px;">
+        <h1>Modify pets</h1>
+        {% csrf_token %}
+        <div>
+            <select name="species" id="species">
+                <option selected="true" disabled="disabled">Species</option>
+                <option value="dog">Dog</option>
+                <option value="dog">Cat</option>
+                <option value="dog">Others</option>
+            </select>
+            <select name="age" id="age" required>
+                <option selected="true" disabled="disabled">Age</option>
+                <option value="5">0~5</option>
+                <option value="6-9">6~9</option>
+                <option value="10">10~</option>
+            </select>
+            <select name="state" id="state" required>
+                <option selected="true" disabled="disabled">State</option>
+                <option value="NSW">NSW</option>
+                <option value="QLD">QLD</option>
+                <option value="VIC">VIC</option>
+                <option value="ACT">ACT</option>
+                <option value="SA">SA</option>
+            </select>
+        </div>
+        <button id="submit" type="submit">Search</button>
+        {% if error_msg %}
+            <p style="color:red; background-color:white; padding:10px; border-radius: 5px;">
+                {{ error_msg }}
+            </p>
+        {% endif %}
+    </form>
+    {% if edit_success %}
+        <p id="success">{{edit_success}}</p>
+    {% endif %}
+    {% if edit_fail %}
+        <p id="delete">{{edit_fail}}</p>
+    {% endif %}
+    {% if delete %}
+        <p id="delete">{{delete}}</p>
+    {% endif %}
+    <h2 style="padding-left: 30px;">{{ category }}</h2>
+
+    <div id="pets">
+        {% if not pets %}
+            <h1>No result found.</h1>
+        {% else %}
+            {% for pet in pets %}
+            <div href="/pet-detail?pet_id={{ pet.id }}" id="pet-box">
+                <div id="pet-img">
+                    <img src="static/{{ pet.image_path }}" alt="{{ pet.name }} image">
+                </div>
+                <div id="pet-feature">
+                    <p>Name: {{ pet.name }}</p>
+                    <p>Status: {{ pet.status }}</p>
+                    <p>Location: {{ pet.suburb }} {{ pet.state }}
+                    <p>Date: {{ pet.date_added }}</p>
+                </div>
+                {% if request.session.login_user == 1 %}
+                    <div id="admin-only">
+                        <a href="/edit-pet?pet_id={{ pet.id }}" id="edit-pet">Edit</a>
+                        <a href="/delete-pet?pet_id={{ pet.id }}" id="delete-pet">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

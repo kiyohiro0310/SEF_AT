@@ -1,0 +1,14 @@
+<div id="auth-box">
+    <h2>Sign up</h2>
+    <form id="auth-form" action="/signup" method="POST">
+        {% csrf_token %}
+        <input type="text" name="firstname" id="firstname" placeholder="Firstname" required>
+        <input type="text" name="lastname" id="lastname" placeholder="Lastname" required>
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="text" name="email" id="email" placeholder="Email" required>
+        <input type="text" name="phone" id="phone" placeholder="Phone" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <button id="auth-form-button" type="submit" >SIGN UP</button>
+    </form>
+    <span>Already user? <a href="/authentication?auth_method=login">Login</a></span>
+</div>
