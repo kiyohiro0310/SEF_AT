@@ -1,19 +1,50 @@
+<!--Student ID:22060887, Name:Shehryar Khan, Class:11am PS-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet detail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Young+Serif&display=swap" rel="stylesheet">
+    <title>{{ pet.name }} - Pet detail</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/master.css'" %}">
-    <link rel="stylesheet" href="{% static 'css/sherry.css'" %}">
+    <!-- Linking Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/master.css'%}">
+    <link rel="stylesheet" href="{% static 'css/sherry.css'%}">
 
 </head>
 <body>
+    <!-- Header section -->
     {% include 'layout/header.html' %}
-    <h1>This is {{ pet.name }} page</h1>
-    <h2>{{ pet.description }}</h2>
-    <a href="/pet-form">Go to pet form</a>
+
+    <!-- Pet details section -->
+    <section class="pet-details">
+        <h1>{{ pet.name }}</h1>
+        <section class="img-class">
+            <img src="{% static pet.image_path %}" width="350" height="350" alt="{{ pet.name }}">
+            <p><strong>Description:</strong> {{ pet.description }}</p>
+        </section>
+
+        <!-- Additional pet details -->
+        <section class="other-details">
+            <ul>
+                <strong><li>Breed:</strong> {{ pet.breed }}</li>
+                <strong><li>Age:</strong> {{ pet.age }}</li>
+                <strong><li>Gender:</strong> {{ pet.gender }}</li>
+                <strong><li>Status:</strong> {{ pet.status }}</li>
+                <strong><li>Location:</strong> {{ pet.suburb }}, {{ pet.state }}</li>
+                <strong><li>Fee:</strong> ${{ pet.fee }}</li>
+                <strong><li>Date Added:</strong> {{ pet.date_added }}</li>          
+            </ul>
+        </section>
+    </section>
+
+    <!-- Button to navigate to pet form -->
+    <section class = "button-container">
+        <a href="/pet-form" class="pet-form-btn">Go to pet form</a>
+    </section>
+
+     <!-- Footer section -->
     {% include 'layout/footer.html' %}
 </body>
 </html>
