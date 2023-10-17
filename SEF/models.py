@@ -21,7 +21,7 @@ class Pet(models.Model):
         return json.dumps({
                 "name": self.name,
                 "species": self.species,
-                "breed": self.species,
+                "breed": self.breed,
                 "age": self.age,
                 "gender": self.gender,
                 "description": self.description,
