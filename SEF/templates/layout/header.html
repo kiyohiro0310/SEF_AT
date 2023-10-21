@@ -7,7 +7,7 @@
             <a href="/about-us">About us</a>
 
             {% if request.session.login_user %}
-            <a href="/find-adopter" id="login">Find an adopter</a>
+            <a href="/find-adopter" id="login">Register a pet</a>
             <a href="/pet-form" id="login">Adopt a pet</a>
             {% endif %}
         </div>
@@ -47,7 +47,7 @@
 
         {% if request.session.login_user %}
             <div id="mobile-header-right">
-                <a href="/find-adopter" id="login">Find an adopter</a>
+                <a href="/find-adopter" id="login">Register a pet</a>
                 <a href="/pet-form" id="login">Adopt a pet</a>
                 {% if request.session.login_user == 1 %}
                     <a href="/admin" id="login">Admin</a>

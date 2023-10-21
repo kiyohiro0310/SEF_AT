@@ -73,14 +73,15 @@
     </div>
 
     <form action="#" method="post" id="myForm">
+      {% csrf_token %}
       <div class = "form">
       <div class="oneRow">
-          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
-          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
+          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" pattern="^[A-Za-z]+$" required></p>
+          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" pattern="^[A-Za-z]+$" required></p>
       </div>
   
       <div class="twoRow">
-          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" pattern="[A-Za-z]{3}"></p>
+          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number" pattern="[A-Za-z]"></p>
           <p>Email <input type="text" name="Email" placeholder="Enter Email"></p>
       </div>
   
