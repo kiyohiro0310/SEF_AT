@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Young Serif','Roboto Serif';
-    background-color: #dedcdc;
+    background-color: white;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -13,36 +13,48 @@ body {
 .pet-details {
     background-color: #ffffff;
     max-width: 800px;
-    height: 850px;
+    height: fit-content;
     margin: 40px auto;
-    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 .pet-details h1 {
     font-size: 3em;
-    margin-bottom: 20px;
+    margin: 0 30px;
     color: #A0C49D;
     text-decoration: underline;
     
 }
 
 /*Image Styles*/
+
 .img-class{
-    height: 400px;
-    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin:10px 10px;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width:900px) {
+    .img-class{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .img-class img{
-    float: left;
-    margin-right: 2%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     border: 1px solid #ddd;
     padding: 5px;
     max-width: auto;
     min-width: auto;
     border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 .pet-details img:hover {
@@ -52,28 +64,26 @@ body {
 /*Description Styles*/
 
 .img-class p{
+    
     font-size: 1.1em;
-    text-align: justify;
-    margin-left: 125px;
-    margin-right: 15px;
+    margin: 10px 10px;
     color: #333;
 }
 
-.img-class strong{
+.img-class h2{
     color:  #2d6b28;
 }
-.other-details li{
+.other-details {
+    width: 100%;
     text-align: left;
-    font-size: large;
-    margin: 5px;
 }
 
+
+.other-details p {
+    text-align: left;
+}
 .other-details strong {
     color: #2d6b28;
-}
-
-.other-details{
-    margin: 20px;
 }
 
 /*Button styles*/
@@ -101,3 +111,4 @@ body {
     background-color: #89b087;
     text-decoration: none;
 }
+
