@@ -13,7 +13,7 @@ body {
 .pet-details {
     background-color: #ffffff;
     max-width: 800px;
-    height: 850px;
+    height: fit-content;
     margin: 40px auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -81,8 +81,8 @@ body {
 .button-container {
     display: flex;
     justify-content: center; 
-    align-items: center;     
-    height: 30vh;          
+    align-items: center;
+    padding: 30px;
 }
 
 .pet-form-btn {

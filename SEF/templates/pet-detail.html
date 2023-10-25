@@ -37,9 +37,18 @@
                 <strong><li>Date Added:</strong> {{ pet.date_added }}</li>          
             </ul>
         </section>
+
+        {% if request.session.login_user and not request.session.login_user == 1 %}
+            <div class="button-container">
+                <a href="/apply-pet?pet_id={{ pet.id }}" class="pet-form-btn">Apply this pet</a>
+            </div>
+
+        {% endif %}
+
     </section>
 
     <!-- Button to navigate to pet form -->
+
     <section class = "button-container">
         <a href="/pet-form" class="pet-form-btn">Go to pet form</a>
     </section>
