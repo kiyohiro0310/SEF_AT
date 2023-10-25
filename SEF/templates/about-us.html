@@ -72,16 +72,32 @@
     <div class="last">
     </div>
 
-    <form action="#" method="post" id="myForm">
+    <script src="static/js/Leon.js"></script>
+    <form id action="#" method="post" id="myForm" >
+      {% csrf_token %}
       <div class = "form">
+
       <div class="oneRow">
-          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
-          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
+        <p>
+        <label for="firstName">First Name</label>
+        <input id="Name" name="firstName" type="text" placeholder="Enter First Name" pattern="^[A-Za-z]+$" required>
+        </p>  
+        <p>
+        <label for = "lastName"> Last Name </label>
+        <input id = "Name" name="lastName" type = "text" placeholder="Enter Last Name"pattern="^[A-Za-z]+$" required>
+        </p>  
       </div>
   
       <div class="twoRow">
-          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number"></p>
-          <p>Email <input type="text" name="Email" placeholder="Enter Email"></p>
+        <p>
+          <label for = "phone"> Phone Number </label>
+          <input id = "phone" name="phone" type = "tel" placeholder="Enter Phone"pattern="^[A-Za-z]+$" required>
+          </p>  
+          <p>
+            <label for = "email"> Email </label>
+            <input id = "email" name="email" type = "text" placeholder="Enter Email"pattern="^[A-Za-z]+$" required>
+            </p>  
+
       </div>
   
       <div class="threeRow">
@@ -94,8 +110,9 @@
           <textarea name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500"></textarea>
       </div>
       <br>
+
       <div class="button-container">
-          <button class="button" type="submit">Apply</button>
+          <button class="button" type="submit" >Apply</button>
       </div>
     </div>
   </form>
