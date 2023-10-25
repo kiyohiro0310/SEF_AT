@@ -2,3 +2,8 @@
 .vscode
 .gitignore
 .db.sqlite3
+SEF/__pycache__/models.cpython-311.pyc
+SEF/__pycache__/urls.cpython-311.pyc
+SEF/__pycache__/views.cpython-311.pyc
+SEF/migrations/__pycache__/0001_initial.cpython-311.pyc
+web_project/__pycache__/urls.cpython-311.pyc
