@@ -39,9 +39,30 @@
             </div>
         </section>
 
+
+        <!-- Additional pet details -->
+        <section class="other-details">
+            <ul>
+                <strong><li>Breed:</strong> {{ pet.breed }}</li>
+                <strong><li>Age:</strong> {{ pet.age }}</li>
+                <strong><li>Gender:</strong> {{ pet.gender }}</li>
+                <strong><li>Status:</strong> {{ pet.status }}</li>
+                <strong><li>Location:</strong> {{ pet.suburb }}, {{ pet.state }}</li>
+                <strong><li>Fee:</strong> ${{ pet.fee }}</li>
+                <strong><li>Date Added:</strong> {{ pet.date_added }}</li>          
+            </ul>
+        </section>
+
+        {% if request.session.login_user and not request.session.login_user == 1 %}
+            <div class="button-container">
+                <a href="/apply-pet?pet_id={{ pet.id }}" class="pet-form-btn">Apply this pet</a>
+            </div>
+
+        {% endif %}
     </section>
 
     <!-- Button to navigate to pet form -->
+
     <section class = "button-container">
         <a href="/pet-form" class="pet-form-btn">Go to pet form</a>
     </section>
