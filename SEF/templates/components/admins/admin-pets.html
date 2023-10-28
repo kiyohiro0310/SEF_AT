@@ -50,14 +50,14 @@
             <h1>No result found.</h1>
         {% else %}
             {% for pet in pets %}
-            <div href="/pet-detail?pet_id={{ pet.id }}" id="pet-box">
+            <div id="pet-box">
                 <div id="pet-img">
                     <img src="static/{{ pet.image_path }}" alt="{{ pet.name }} image">
                 </div>
                 <div id="pet-feature">
                     <p>Name: {{ pet.name }}</p>
                     <p>Status: {{ pet.status }}</p>
-                    <p>Location: {{ pet.suburb }} {{ pet.state }}
+                    <p>Location: {{ pet.suburb }}, {{ pet.state }}
                     <p>Date: {{ pet.date_added }}</p>
                 </div>
                 {% if request.session.login_user == 1 %}

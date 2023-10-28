@@ -1,4 +1,5 @@
 import json
+from pyexpat import model
 from django.db import models
 
 # Create your models here.
@@ -21,7 +22,7 @@ class Pet(models.Model):
         return json.dumps({
                 "name": self.name,
                 "species": self.species,
-                "breed": self.species,
+                "breed": self.breed,
                 "age": self.age,
                 "gender": self.gender,
                 "description": self.description,
@@ -51,4 +52,20 @@ class User(models.Model):
                 "phone": self.phone,
                 "password": self.password,
                 "last_login": self.last_login
+            })
+
+class Apply(models.Model):
+    pet = models.ForeignKey(
+        "Pet", on_delete=models.CASCADE
+    )
+    user = models.ForeignKey(
+        "User", on_delete=models.CASCADE
+    )
+    approval = models.CharField(max_length=20)
+
+    def __str__(self):
+        return json.dumps({
+                "pet": self.pet,
+                "user": self.user,
+                "approval": self.approval
             })

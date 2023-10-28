@@ -1,0 +1,114 @@
+/*Student ID:22060887, Name:Shehryar Khan, Class:11am PS*/
+
+/* Pet Details CSS */
+
+body {
+    font-family: 'Young Serif','Roboto Serif';
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.pet-details {
+    background-color: #ffffff;
+    max-width: 800px;
+    height: fit-content;
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.pet-details h1 {
+    font-size: 3em;
+    margin: 0 30px;
+    color: #A0C49D;
+    text-decoration: underline;
+    
+}
+
+/*Image Styles*/
+
+.img-class{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin:10px 10px;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width:900px) {
+    .img-class{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.img-class img{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    max-width: auto;
+    min-width: auto;
+    border-radius: 8px;
+}
+
+.pet-details img:hover {
+    box-shadow: 0 0 1px 1px #A0C49D;
+}
+
+/*Description Styles*/
+
+.img-class p{
+    
+    font-size: 1.1em;
+    margin: 10px 10px;
+    color: #333;
+}
+
+.img-class h2{
+    color:  #2d6b28;
+}
+.other-details {
+    width: 100%;
+    text-align: left;
+}
+
+
+.other-details p {
+    text-align: left;
+}
+.other-details strong {
+    color: #2d6b28;
+}
+
+/*Button styles*/
+
+.button-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 30px;
+}
+
+.pet-form-btn {
+    display: inline-block;
+    padding: 20px 20px;
+    background-color: #A0C49D;
+    color: white;
+    border-radius: 7px;
+    font-family: 'Young Serif', serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pet-form-btn:hover {
+    background-color: #89b087;
+    text-decoration: none;
+}
+

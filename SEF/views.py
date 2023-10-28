@@ -1,13 +1,14 @@
 
 import datetime
 from email.mime import application
+import json
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from SEF.forms import UserForm
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import authenticate, login, logout
 
-from SEF.models import Pet, User
+from SEF.models import Apply, Pet, User
 
 # Create your views here.
 def home(request):
@@ -138,16 +139,6 @@ def admin(request):
                         'pets_content': True
                     }
                 )
-            elif request.GET["page"] == "applications":
-                applications = []
-                return render(
-                    request,
-                    'admin.html',
-                    context={
-                        "admin_app_page": True,
-                        "applications": applications
-                    }
-                )
             else:
                 return render(
                     request,
@@ -166,6 +157,46 @@ def admin(request):
                     "pets_content": True
                     }
                 )
+
+def admin_application(request):
+    applications = []
+    applies = Apply.objects.all().filter(approval="applying")
+
+    for apply in applies:
+        user = User.objects.get(id=apply.user_id)
+        pet = Pet.objects.get(id=apply.pet_id)
+
+        data = {
+            "pet_id": pet.id,
+            "user_id": user.id,
+            "name": pet.name,
+            "species": pet.species,
+            "breed": pet.breed,
+            "age": pet.age,
+            "gender": pet.gender,
+            "description": pet.description,
+            "image_path": pet.image_path,
+            "status": pet.status,
+            "suburb": pet.suburb,
+            "state": pet.state,
+            "fee": pet.fee,
+            "date_added": pet.date_added,
+            "user_id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "phone": user.phone,
+        }
+        applications.append(data)
+
+    return render(
+        request,
+        'admin-applications.html',
+            context={
+                "pets_content": False,
+                "admin_app_page": True,
+                "applications": applications
+            }
+        )
 
 def authentication(request):
     method = request.GET["auth_method"]
@@ -404,3 +435,47 @@ def find_adopter(request):
         request,
         'find-adopter.html'
     )
+
+
+def apply_pet(request):
+    if request.GET:
+        pet = Pet.objects.get(id=request.GET['pet_id'])
+        user = User.objects.get(id=request.session['login_user'])
+        apply = Apply.objects.create(
+            pet=pet,
+            user=user,
+            approval="applying"
+        )
+        apply.save()
+
+        pet.status = "Adoption Pending"
+        pet.save()
+
+    return redirect('/')
+
+def approve_application(request):
+    pet_id = request.GET['pet_id']
+    user_id = request.GET['user_id']
+
+    application = Apply.objects.get(pet_id=pet_id, user_id=user_id)
+    application.approval = "approved"
+    application.save();
+
+    pet = Pet.objects.get(id=pet_id)
+    pet.delete();
+
+    return redirect("/admin-applications")
+
+
+def reject_application(request):
+    pet_id = request.GET['pet_id']
+    user_id = request.GET['user_id']
+    application = Apply.objects.get(pet_id=pet_id, user_id=user_id)
+    application.approval = "rejected"
+    application.save();
+
+    pet = Pet.objects.get(id=pet_id)
+    pet.status = "Available"
+    pet.save()
+
+    return redirect("/admin-applications")

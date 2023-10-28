@@ -17,8 +17,9 @@
 
     <div id="hero">
         <div id="hero-left">
-            <h1>Find Your Pet</h1>
-            <p>Pet need your hand</p>
+            <!-- Changed some of the words in h1 and p.-->
+            <h1>Find A Pet</h1>
+            <p>Search For A Pet Here!</p>
             <form action="/search-pet" method="POST" id="search-pet">
                 {% csrf_token %}
                 <div>
@@ -41,6 +42,8 @@
                         <option value="VIC">VIC</option>
                         <option value="ACT">ACT</option>
                         <option value="SA">SA</option>
+                        <option value="TAS">TAS</option>
+                        <!-- Changed the words in h1 and p For clarity.-->
                     </select>
                 </div>
                 <button id="submit" type="submit">Search</button>
@@ -81,13 +84,14 @@
     </div>
 
     <div id="motto">
-        <h1>We are here to help beloved small lives</h1>
-        <p>Your hand will save lots of animals</p>
+        <h1>We are here to help all animals get loving homes!</h1>
+        <p>Any and All Contribution Is Welcome!</p>
     </div>
 
     <div id="contact">
-        <h1>Contact</h1>
-        <p>Please don't hesitate to ask question</p>
+        <!-- Changed the words in h1 and p For clarity.-->
+        <h1>Contact Us</h1>
+        <p>Got a question? Ask here!</p>
         <form action="/contact" method="POST">
             <div id="contact-top">
                 <div>

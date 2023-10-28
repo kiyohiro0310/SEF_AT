@@ -8,10 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
 
+    {% load static %}
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/Leon.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+
     <title>About Us</title>
-]</head>
+</head>
 <body>
     {% include "layout/header.html" %}
     <h1 class="main">About Us</h1>
@@ -69,16 +72,31 @@
     <div class="last">
     </div>
 
-    <form action="#" method="post" id="myForm">
+    <form id action="#" method="post" id="myForm" onsubmit="return validateForm(event);">
+      {% csrf_token %}
+      <div class = "form">
+
       <div class="oneRow">
-          <label for="firstName">First Name:</label>
-          <p>First Name <input type="text" name="FirstName" placeholder="Enter First Name" required></p>
-          <p>Last Name <input type="text" name="LastName" placeholder="Enter Last Name" required></p>
+        <p>
+        <label for="firstName">First Name</label>
+        <input id="FName" name="firstName" type="text" placeholder="Enter First Name"  >
+        </p>  
+        <p>
+        <label for = "lastName"> Last Name </label>
+        <input id = "LName" name="lastName" type = "text" placeholder="Enter Last Name" >
+        </p>  
       </div>
   
       <div class="twoRow">
-          <p>Phone <input type="tel" name="Phone" placeholder="Phone Number"></p>
-          <p>Email <input type="text" name="Email" placeholder="Enter Email"></p>
+        <p>
+          <label for = "phone"> Phone Number </label>
+          <input id = "phone" name="phone" type = "tel" placeholder="Enter Phone" >
+          </p>  
+          <p>
+            <label for = "email"> Email </label>
+            <input id = "email" name="email" type = "text" placeholder="Enter Email" >
+            </p>  
+
       </div>
   
       <div class="threeRow">
@@ -91,12 +109,60 @@
           <textarea name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500"></textarea>
       </div>
       <br>
+
       <div class="button-container">
-          <button class="button" type="submit">Apply</button>
+          <button class="button" type="submit" >Apply</button>
       </div>
+    </div>
   </form>
   
 <br>
+
+<script>
+  function validateForm(event) {
+    //set variables name and inforamtion via getting the id from the form
+    var fName = document.getElementById('FName');
+    var lName = document.getElementById('LName');
+    var email = document.getElementById('email');
+    var phone = document.getElementById('phone');
+    //set regular expression variables
+    var namePattern = /^[A-Za-z]+$/;
+    var regExpForPhone = /^[0-9]{10}$/;
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // Check first name
+    if (!namePattern.test(fName.value)) {
+      fName.style.borderColor = "red";
+      event.preventDefault(); // Prevent form submission
+    } else {
+      fName.style.borderColor = "";
+    }
+
+    // Check last name
+    if (!namePattern.test(lName.value)) {
+      lName.style.borderColor = "red";
+      event.preventDefault();
+    } else {
+      lName.style.borderColor = "";
+    }
+
+    // Check email (you should use a proper email pattern)
+    if (!emailPattern.test(email.value)) {
+      email.style.borderColor = "red";
+      event.preventDefault();
+    } else {
+      email.style.borderColor = "";
+    }
+
+    if (!regExpForPhone.test(phone.value)) {
+      phone.style.borderColor = "red";
+      event.preventDefault();
+    } else {
+      phone.style.borderColor = "";
+    }
+  }
+</script>
+
 
 
 </body>
