@@ -1,3 +1,37 @@
+<script defer>
+    function authValidation(event) {
+        var firstname = document.getElementById('firstname')
+        var lastname = document.getElementById('lastname')
+        var username = document.getElementById('username')
+        var email = document.getElementById('email')
+        var phone = document.getElementById('phone')
+        var password = document.getElementById('password')
+
+        var nameRegularExp = /^[A-Za-z]+$/;
+        var emailRegularExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var phoneRegularExp = /^[0-9]{10}$/;
+
+        // validates username, making sure it is not empty 
+        if(username.value.trim() === '' || username.value === null) {
+            username.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            username.style.borderColor = ''
+        }
+
+        // validates password, making sure it is not empty and has a minimum length of 8
+        if(password.value.trim() === '' || password.value === null) {
+            password.style.borderColor = 'red'
+            event.preventDefault()
+        } else if(password.value.length < 8) {
+            password.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            password.style.borderColor = ''
+        }
+    }
+</script>
+
 <div id="auth-box">
     <h2>Log in</h2>
     <form id="auth-form" action="/login" method="POST">

@@ -1,19 +1,39 @@
-.form_container{
+.form_container{ /* This changes the backgroup of the page outside the form, it also displays the form box in the center of the page */
     text-align: center;
     width: 100%;
-    max-width: 600px;
-    height: 70vh;
+    height: 1000px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: lightcyan;
 }
 
-#form{
-    display: flex;
-    flex-direction: row;
+input[type=text] { /* This changes the background for the text boxes in the form */
+    background-color: lightcyan;
+    border-radius: 5px;
 }
 
-.example{
-    font-size: small;
+textarea { /* This changes the background for the large text boxes in the form */
+    background-color: lightcyan;
+    border-radius: 5px;
+}
+
+.form_box{
+    height: fit-content;
+    width: 380px;
+    background-color: white;
+    border-radius: 40px;
+    padding: 2vw 4vw;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.question2, .question3 {
+    display: flexbox;
+}
+
+#example{
+    font-size: 70%;
+    color: gray;
 }
 
 .button{
@@ -26,8 +46,15 @@
     cursor: pointer;
     font-size: 18px;
 }
+
 .button:hover {
     background-color: #A0C49D;
     border: none;
-    color: white;
+    color: white;   
+}
+
+.errorMsg {
+    color: red;
+    font-style: italic;
+    font-size: 13px;
 }

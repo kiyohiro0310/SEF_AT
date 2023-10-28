@@ -10,36 +10,144 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/master.css'" %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Daniel.css'" %}">
+
+    <script>
+        function adoptionValidation(event) {
+            
+            // the variables for each part of them using the respective id
+            var animal = document.getElementById('animal');
+            var petForm = document.getElementById('petForm');
+            var textDescribe = document.getElementById('textDescribe');
+            var anyPets = document.getElementsByName('any_pets');
+            var yesNo = document.getElementsByName('yes_no')
+
+            var messages = []
+
+            // the variables for each error
+            var error = document.getElementById('error');
+            var error2 = document.getElementById('error2');
+            var error3 = document.getElementById('error3');
+            var error4 = document.getElementById('error4');
+
+            // regular expression pattern to prevent inappropriate characters
+            var petPattern = /^[A-Za-z]+$/;
+            
+            // validates the pet name form question
+            if(animal.value.trim() === '' || animal.value === null) {
+                animal.style.borderColor = 'red'
+                messages.push('The name of the pet is required')
+                error.textContent = 'The name of the pet is required'
+            } else if(!petPattern.test(animal.value)) {
+                animal.style.borderColor = 'red'
+                messages.push('Only letters allowed')
+                error.textContent = 'Only letters allowed'
+            }  else {
+                error.textContent = '' // Clear the error message
+                animal.style.borderColor = ''
+            }   
+            
+            // validates the pets radio button question, makes sure you have an option selected
+            var anyPetsSelected = false;
+            for(var i = 0; i < anyPets.length; i++) {
+                if(anyPets[i].checked) {
+                    anyPetsSelected = true;
+                }
+            }
+
+            if(!anyPetsSelected) {
+                messages.push('Please select an option')
+                error2.textContent ='Please select an option'
+            } else {
+                error2.textContent = '' // Clear the error message
+            }
+
+            // validates the children radio button question, makes sure you have an option selected
+            var yesNoSelected = false;
+            for(var i = 0; i < yesNo.length; i++) {
+                if(yesNo[i].checked) {
+                    yesNoSelected = true;
+                }
+            }
+
+            if(!yesNoSelected) {
+                messages.push('Please select an option')
+                error3.textContent ='Please select an option'
+            } else {
+                error3.textContent = '' // Clear the error message
+            }
+
+            // validates the home details form question
+            if(textDescribe.value.trim() === '' || textDescribe.value === null) {
+                textDescribe.style.borderColor = 'red'
+                messages.push('Details about your home are required')
+                error4.textContent = 'Details about your home are required'
+            } else {
+                error4.textContent = '' // Clear the error message
+                textDescribe.style.borderColor = ''
+            }
+            
+            // prevents the form from being submitted if any of the messages have been pushed
+            if(messages.length > 0) {
+                event.preventDefault();
+            }    
+        }
+    </script>
 </head>
 
 <body>
     {% include 'layout/header.html' %}
-
     <div class = form_container>
-        <form>
-            <label for="animal">What is the name of the animal you would like to adopt?</label><br>
-            <input type="text" id="animal" name="animal" placeholder="Animal Name" required="required"><br>
-            
-            <label for="email">What is your email?</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required="required">
+        <div class = form_box>
 
-            <p>Do any other pets live in your home?</p>
-            <input type ="radio" id="yes" name="yes_no" value="Yes">
-            <label for="yes">Yes</label><br>
-            <input type ="radio" id="no" name="yes_no" value="No">
-            <label for="no">No</label><br>
+            <form method="post" id="petForm" onsubmit="return adoptionValidation(event);">
+                {% csrf_token %} 
+                <div class = question1>
+                    <label for="animal">What is the name of the animal you would like to adopt? *</label><br>
+                    <input type="text" id="animal" name="animal" placeholder="Animal Name"><br>
+                    <span id="error" class="errorMsg"></span>
+                </div>
 
-            <p><label for="textDescribe">Describe your home in 500 words or less</label> </p>
-            <p id="example">For example, do you have a backyard, the size of your house ect</p>
-            <textarea id="textDescribe" name="textDescribe" rows="4" cols="50" value="textDescribe" min="0" max="500">
-            </textarea>
+                <div class = question2>
+                    <p>Do any other pets live in your home? *</p>
+                    <input type ="radio" id="yes" name="any_pets" value="Yes">
+                    <label for="yes">Yes</label><br>
+                    <input type ="radio" id="no" name="any_pets" value="No">
+                    <label for="no">No</label><br>
+                    <span id="error2" class="errorMsg"></span>
+                </div>
 
-            <br>
-            <div class="button-container">
-            <button  class = "button" type="submit">Submit Form</button>
-            </div>
-        </form>
+                <div class = question3>
+                    <p>Do you have any children under the age of 18? *</p>
+                    <input type ="radio" id="yes" name="yes_no" value="Yes">
+                    <label for="yes_children">Yes</label><br>
+                    <input type ="radio" id="no" name="yes_no" value="No">
+                    <label for="no_children">No</label><br>
+                    <span id="error3" class="errorMsg"></span>
+                </div>
+
+                <div class = question4>
+                    <p><label for="textDescribe">Describe your home *</label> </p>
+                    <p id="example">For example, do you have a backyard, the size of your house ect</p>
+                    <textarea id="textDescribe" name="textDescribe" rows="5" cols="45" min="0" max="1000">
+                    </textarea>
+                    <span id="error4" class="errorMsg"></span>
+                </div>
+
+                <div class = question5>
+                    <p><label for="relevant">Please provide any other information you feel is relevant about your home, pet, or relationships</label> </p>
+                    <textarea id="relevant" name="relevant" rows="5" cols="45" min="0" max="1000">
+                    </textarea>
+                </div>
+
+                <div class="button-container">
+                    <button  class = "button" type="submit">Submit Form</button>
+                </div>
+
+            </form>
+        </div>
     </div>
+
     {% include 'layout/footer.html' %}
+
 </body>
 </html>
