@@ -18,30 +18,34 @@
     {% if request.session.login_user %}
     <div id="pet-edit">
         <div id="pet-edit-container">
-            <h1>Find adopter</h1>
-            <form action="/find-adopter" method="POST">
+            <h1>Register your pet</h1>
+            <form id="pet-form" action="/find-adopter" method="POST">
                 {% csrf_token %}
                 <div id="edit-form-container">
                     <input type="hidden" name="image_path" id="image_path" value="images/pet_spy.jpeg">
                     <div>
                         <label for="pet-name">Name:</label>
-                        <input type="text" name="pet-name" id="pet-name" required>
+                        <input type="text" name="pet-name" id="pet-name">
+                        <p id="pet-name-err" style="display: none; color: red;">Invalid input.</p>
                     </div>
                     <div>
                         <label for="species">Species:</label>
-                        <input type="text" name="species" id="species" required>
+                        <input type="text" name="species" id="species">
+                        <p id="species-err" style="display: none; color: red;">Invalid input.</p>
                     </div>
                     <div>
                         <label for="breed">Breed:</label>
-                        <input type="text" name="breed" id="breed" required>
+                        <input type="text" name="breed" id="breed">
+                        <p id="breed-err" style="display: none; color: red;">Invalid input.</p>
                     </div>
                     <div>
                         <label for="age">Age:</label>
-                        <input type="number" name="age" id="age" required>
+                        <input type="number" name="age" id="age">
+                        <p id="age-err" style="display: none; color: red;">Invalid input.</p>
                     </div>
                     <div>
                         <label for="gender">Gender:</label>
-                        <select name="gender" id="gender" required>
+                        <select name="gender" id="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Unknown">Unknown</option>
@@ -50,14 +54,15 @@
 
                     <div>
                         <label for="status">Status:</label>
-                        <select name="status" id="status" required>
+                        <select name="status" id="status">
                             <option value="Adoption Pending">Adoption Pending</option>
                             <option value="Available">Available</option>
                         </select>
                     </div>
                     <div>
                         <label for="suburb">Suburb:</label>
-                        <input type="text" name="suburb" id="suburb" required>
+                        <input type="text" name="suburb" id="suburb">
+                        <p id="suburb-err" style="display: none; color: red;">Invalid input.</p>
                     </div>
                     <div>
                         <label for="state">State:</label>
@@ -71,16 +76,19 @@
                     </div>
                     <div>
                         <label for="fee">Fee:</label>
-                        <input type="number" name="fee" id="fee" required>
+                        <input type="number" name="fee" id="fee">
+                        <p id="fee-err" style="display: none; color: red;">Invalid input.</p>
                     </div>
 
                 </div>
                 <div id="description-container">
                     <label for="description">Description:</label>
+                    <p id="description-err" style="display: none; color: red;">Invalid input.</p>
                     <textarea name="description" id="description" cols="25" rows="20"></textarea>
                 </div>
                 <div id="edit-button-container">
-                    <button id="edit-button" type="submit">Edit</button>
+                    <p id="submit-err" style="display: none; color: red;">There are some invalid inputs.</p>
+                    <button id="edit-button" type="submit">Submit</button>
                 </div>
             </form>
         </div>
