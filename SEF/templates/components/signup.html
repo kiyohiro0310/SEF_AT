@@ -1,15 +1,77 @@
 <script defer>
     function authValidation(event) {
-        var firstname = document.form.firstname.value;
+        var firstname = document.getElementById('firstname')
+        var lastname = document.getElementById('lastname')
+        var username = document.getElementById('username')
+        var email = document.getElementById('email')
+        var phone = document.getElementById('phone')
+        var password = document.getElementById('password')
 
         var nameRegularExp = /^[A-Za-z]+$/;
+        var emailRegularExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var phoneRegularExp = /^[0-9]{10}$/;
 
+        // validates first name, making sure it is not empty and no inappropriate characters
         if(firstname.value.trim() === '' || firstname.value === null)  {
             firstname.style.borderColor = 'red';
             event.preventDefault();
         } else if(!nameRegularExp.test(firstname.value)) {
             firstname.style.borderColor = 'red';
             event.preventDefault();
+        } else {
+            firstname.style.borderColor = ''
+        }
+
+        // validates last name, making sure it is not empty and no inappropriate characters
+        if(lastname.value.trim() === '' || lastname.value === null) {
+            lastname.style.borderColor = 'red'
+            event.preventDefault()
+        } else if(!nameRegularExp.test(lastname.value)) {
+            lastname.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            lastname.style.borderColor = ''
+        }
+
+        // validates username, making sure it is not empty 
+        if(username.value.trim() === '' || username.value === null) {
+            username.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            username.style.borderColor = ''
+        }
+
+        // validates email, making sure it is not empty and no inappropriate characters
+        if(email.value.trim() === '' || email.value === null) {
+            email.style.borderColor = 'red'
+            event.preventDefault()
+        } else if(!emailRegularExp.test(email.value)) {
+            email.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            email.style.borderColor = ''
+        }
+
+        // validates phone, making sure it is not empty and no inappropriate characters
+        if(phone.value.trim() === '' || phone.value === null) {
+            phone.style.borderColor = 'red'
+            event.preventDefault()
+        } else if(!phoneRegularExp.test(phone.value)) {
+            phone.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            phone.style.borderColor = ''
+        }
+
+        // validates password, making sure it is not empty and has a minimum length of 8
+        if(password.value.trim() === '' || password.value === null) {
+            password.style.borderColor = 'red'
+            event.preventDefault()
+        } else if(password.value.length < 8) {
+            password.style.borderColor = 'red'
+            event.preventDefault()
+        } else {
+            password.style.borderColor = ''
         }
     }
 </script>
@@ -19,11 +81,11 @@
     <form id="auth-form" action="/signup" method="POST" onsubmit="return authValidation(event)">
         {% csrf_token %}
         <input type="text" name="firstname" id="firstname" placeholder="Firstname">
-        <input type="text" name="lastname" id="lastname" placeholder="Lastname" required>
-        <input type="text" name="username" id="username" placeholder="Username" required>
-        <input type="text" name="email" id="email" placeholder="Email" required>
-        <input type="text" name="phone" id="phone" placeholder="Phone" required>
-        <input type="password" name="password" id="password" placeholder="Password" required>
+        <input type="text" name="lastname" id="lastname" placeholder="Lastname">
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="text" name="email" id="email" placeholder="Email">
+        <input type="text" name="phone" id="phone" placeholder="Phone">
+        <input type="password" name="password" id="password" placeholder="Password">
         <button id="auth-form-button" type="submit" >SIGN UP</button>
     </form>
     <span>Already user? <a href="/authentication?auth_method=login">Login</a></span>

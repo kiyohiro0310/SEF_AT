@@ -76,4 +76,8 @@ function adoptionValidation(event) {
     if(messages.length > 0) {
         event.preventDefault();
     }    
+
+    function authValidation(event) {
+        
+    }
 }
